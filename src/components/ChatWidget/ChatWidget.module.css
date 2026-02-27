@@ -1,0 +1,42 @@
+/* Виджет чата: круг в правом нижнем углу, область 94×89 для зоны нажатия */
+.widget {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 94px;
+  height: 89px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Круг с иконкой */
+.widgetCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1890FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.widget:hover .widgetCircle {
+  transform: scale(1.1);
+  background: #0a7bd6;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.widgetIcon {
+  color: #ffffff;
+}
+
+.widgetIcon svg {
+  width: 36px;
+  height: 36px;
+}

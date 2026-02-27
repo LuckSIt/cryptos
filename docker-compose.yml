@@ -1,0 +1,13 @@
+# Проект изолирован: имя "cryptos" не пересекается с другими compose на сервере.
+# Запуск: docker compose -p cryptos up -d
+# Сайт будет на порту 3001 (чтобы не занимать 80 у другого приложения).
+
+name: cryptos
+
+services:
+  web:
+    build: .
+    container_name: cryptos-web
+    ports:
+      - "3001:80"
+    restart: unless-stopped

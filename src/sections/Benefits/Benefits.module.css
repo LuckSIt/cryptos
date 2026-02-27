@@ -1,0 +1,72 @@
+.section {
+  width: 100%;
+  padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 80px);
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.inner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.card {
+  background: #1890FF;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 40px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: background 0.25s ease, border-color 0.25s ease, padding 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  background: #1a1a1a;
+  border-color: #64b5f6;
+  padding-top: clamp(44px, 5vw, 64px);
+  transform: translateY(-16px);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: clamp(140px, 18vw, 200px);
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font: 400 clamp(12px, 1.5vw, 14px) / 1.4 "Segoe UI", sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.card:hover .imagePlaceholder {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.cardTitle {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font: 700 clamp(20px, 2.5vw, 28px) / 1.3 "Segoe UI", sans-serif;
+}
+
+.cardText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font: 400 clamp(14px, 1.5vw, 17px) / 1.5 "Segoe UI", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}

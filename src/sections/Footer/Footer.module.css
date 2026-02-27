@@ -1,0 +1,161 @@
+.footer {
+  width: 100%;
+  position: relative;
+  background: #000000;
+  padding: 0 clamp(20px, 4vw, 48px) clamp(20px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+.partnersBar {
+  width: 100%;
+  background: #0a0a0a;
+  padding: 24px clamp(24px, 5vw, 80px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(28px, 5vw, 56px);
+  flex-wrap: nowrap;
+  border-bottom: 1px solid rgba(24, 144, 255, 0.35);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.partnerLogo {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  flex-shrink: 0;
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+
+.partnerLogo:hover {
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+  filter: grayscale(0.6);
+}
+
+.scrollTopWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -20px;
+  position: relative;
+  z-index: 2;
+}
+
+.scrollTopBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #1890FF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.scrollTopBtn:hover {
+  background: #42a5f5;
+}
+
+.scrollTopBtn svg {
+  color: #ffffff;
+}
+
+.mainBlock {
+  width: 100%;
+  max-width: 1400px;
+  margin: 16px auto 24px;
+  padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 80px) clamp(32px, 4vw, 48px);
+  box-sizing: border-box;
+  background: #1890FF;
+  border-radius: 24px;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.brandLink {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.5vw, 28px);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: clamp(32px, 5vw, 64px);
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+
+.columnTitle {
+  margin: 0 0 16px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.columnText {
+  margin: 0 0 8px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.columnText strong {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.linksWrap {
+  text-align: right;
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.links a {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: #ffffff;
+}
+
+.copyright {
+  text-align: center;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}

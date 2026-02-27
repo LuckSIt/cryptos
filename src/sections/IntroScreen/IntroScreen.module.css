@@ -1,0 +1,962 @@
+.screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1890ff;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 346px;
+  overflow: hidden;
+}
+
+.videoWrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+  pointer-events: none;
+}
+
+.videoVisible {
+  opacity: 1;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 144, 255, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.videoOverlayVisible {
+  opacity: 1;
+}
+
+.videoOverlayBusiness {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 25, 55, 0.6);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.videoOverlayBusinessVisible {
+  opacity: 1;
+}
+
+.businessVideo {
+  z-index: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 346px;
+  left: 583px;
+  width: 200px;
+  height: 76px;
+  background: transparent 0% 0% no-repeat padding-box;
+  background-size: contain;
+  opacity: 0;
+  transform: scale(0.92) translateY(8px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  pointer-events: none;
+}
+
+.logoVisible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .logo {
+    left: 50%;
+    margin-left: -100px;
+  }
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease-out;
+}
+
+.pageVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pageHeader {
+  position: relative;
+  flex-shrink: 0;
+  height: clamp(71.5px, 10.47vw, 143px);
+}
+
+.pageHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55.94%;
+  background-color: #1890FF;
+  z-index: 0;
+}
+
+.pageHeaderBusiness::before {
+  background-color: #000000;
+}
+
+.headerLogo {
+  position: absolute;
+  top: 27.97%;
+  left: 10.18vw;
+  width: auto;
+  min-width: 60px;
+  max-width: 120px;
+  height: 21%;
+  min-height: 22px;
+  max-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(-50%);
+}
+
+.headerLogoText {
+  color: #ffffff;
+  font: bold 1rem/1.2 "Segoe UI", sans-serif;
+  white-space: nowrap;
+}
+
+.headerTabs {
+  position: absolute;
+  top: 27.97%;
+  left: 17.2vw;
+  display: flex;
+  transform: translateY(-50%);
+}
+
+.headerTab {
+  box-sizing: border-box;
+  min-width: 56px;
+  max-width: 112px;
+  height: 22.38%;
+  max-height: 32px;
+  min-height: 24px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.475);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  /* Режим Покупателю: неактивная кнопка «Бизнесу» — голубой фон */
+  background: #1890FF;
+  color: #ffffff;
+}
+
+.headerTab:first-of-type {
+  border-right: none;
+  border-radius: 15px 0 0 15px;
+  width: 8.2vw;
+}
+
+.headerTab:last-of-type {
+  border-left: none;
+  border-radius: 0 15px 15px 0;
+  width: 6.52vw;
+}
+
+/* Режим Покупателю: активная кнопка «Покупателю» — белый фон */
+.headerTabActive {
+  background: #ffffff;
+  color: #1890FF;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.headerTabActive:hover {
+  color: #1890FF;
+  background: #ffffff;
+}
+
+/* Режим Бизнесу (чёрный хедер): неактивная «Покупателю» — на чёрном фоне */
+.pageHeaderBusiness .headerTab:not(.headerTabActive) {
+  background: #000000;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.pageHeaderBusiness .headerTab:not(.headerTabActive):hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+/* Режим Бизнесу: активная «Бизнесу» — голубой фон */
+.pageHeaderBusiness .headerTabActive {
+  background: #1890FF;
+  color: #ffffff;
+  border-color: #1890FF;
+}
+
+/* Режим Бизнесу: трубки (телефон, почта) — голубые иконки */
+.pageHeaderBusiness .headerPhoneIcon,
+.pageHeaderBusiness .headerEmailIcon {
+  color: #1890FF;
+}
+
+.pageHeaderBusiness .headerPhone,
+.pageHeaderBusiness .headerEmail {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Режим Бизнесу: контейнер «Войти» — при наведении голубой на всю высоту чёрной полосы */
+.pageHeaderBusiness .headerLoginWrap {
+  transition: background 0.2s ease;
+  border-radius: 4px;
+}
+
+.pageHeaderBusiness .headerLoginWrap:hover {
+  background: #1890FF;
+}
+
+.pageHeaderBusiness .headerLoginWrap:hover .headerLogin {
+  background: transparent;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.pageHeaderBusiness .headerLoginWrap:hover .headerLoginIcon {
+  color: #ffffff;
+}
+
+.pageHeaderBusiness .headerLogin {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.pageHeaderBusiness .headerLogin:hover {
+  background: transparent;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.pageHeaderBusiness .headerLogin:hover .headerLoginIcon {
+  color: #ffffff;
+}
+
+/* Навигация и мессенджеры на странице бизнеса: Segoe UI Regular 12px, opacity 0.7 */
+.pageHeaderBusiness .headerNav a {
+  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  opacity: 0.7;
+}
+
+.pageHeaderBusiness .headerNav a:hover {
+  opacity: 1;
+}
+
+.pageHeaderBusiness .headerMessengerLink {
+  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  opacity: 0.7;
+}
+
+.pageHeaderBusiness .headerMessengerLink:hover {
+  opacity: 1;
+}
+
+.headerPhone {
+  position: absolute;
+  top: 27.97%;
+  left: 57.76vw;
+  min-width: 7.1vw;
+  max-width: 97px;
+  height: 13.29%;
+  max-height: 19px;
+  color: #ffffff;
+  opacity: 0.7;
+  text-align: left;
+  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease, color 0.2s ease, text-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.headerPhoneIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.headerPhone:hover .headerPhoneIcon {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.headerPhoneIcon svg {
+  width: 14px;
+  height: 14px;
+  transform: scaleX(-1);
+}
+
+.headerPhone:hover {
+  opacity: 1;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.25), 0 0 6px rgba(174, 214, 255, 0.2);
+}
+
+.headerEmail {
+  position: absolute;
+  top: 27.97%;
+  left: 66.62vw;
+  min-width: 9.96vw;
+  max-width: 136px;
+  height: 13.29%;
+  max-height: 19px;
+  opacity: 1;
+  color: #ffffff;
+  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateY(-50%);
+  transition: text-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.headerEmailIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.headerEmailIcon svg {
+  width: 14px;
+  height: 14px;
+  transform: scaleX(-1);
+}
+
+.headerEmailTextHover {
+  display: none;
+}
+
+.headerEmail:hover .headerEmailTextDefault {
+  display: none;
+}
+
+.headerEmail:hover .headerEmailTextHover {
+  display: inline;
+}
+
+.headerEmail:hover .headerEmailIcon {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.headerEmail:hover {
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.25), 0 0 6px rgba(174, 214, 255, 0.2);
+}
+
+.headerLangWrap {
+  position: absolute;
+  top: 27.97%;
+  left: 78.33vw;
+  width: 3vw;
+  min-width: 32px;
+  max-width: 41px;
+  height: 11.89%;
+  min-height: 14px;
+  max-height: 17px;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.headerLang {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 41px;
+  height: 17px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font: normal normal bold 12px/17px "Segoe UI", sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.2), 0 0 4px rgba(174, 214, 255, 0.15);
+}
+
+.headerLangFlag {
+  flex-shrink: 0;
+  display: inline-flex;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.headerLangFlag svg {
+  width: 16px;
+  height: 11px;
+  display: block;
+}
+
+.headerLangDropdown {
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  left: -12px;
+  min-width: 76px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.headerLangDropdownVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.headerLangOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 76px;
+  height: 32px;
+  padding: 0 12px;
+  border: none;
+  background: #f5f5f5;
+  color: #595959;
+  font: normal normal bold 12px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.headerLangOption:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.headerLangOption:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.headerLangOption:hover {
+  background-color: #ebebeb;
+}
+
+.headerLangOptionFlag {
+  flex-shrink: 0;
+  display: inline-flex;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.headerLangOptionFlag svg {
+  width: 16px;
+  height: 11px;
+  display: block;
+}
+
+.headerLoginWrap {
+  position: absolute;
+  top: 0;
+  bottom: 44.06%;
+  right: 10.18vw;
+  width: max-content;
+  min-width: unset;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.headerLogin {
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font: normal normal normal 16px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.headerLoginIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.headerLoginIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.headerLogin:hover {
+  color: #000000;
+}
+
+.headerLogin:hover .headerLoginIcon {
+  color: #000000;
+}
+
+.headerNav {
+  position: absolute;
+  top: 61.54%;
+  left: 10.18vw;
+  right: 22vw;
+  width: auto;
+  height: clamp(24px, 4.17vh, 32px);
+  max-height: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.84% 1.76vw;
+  box-sizing: border-box;
+}
+
+.headerNav a {
+  color: #ffffff;
+  text-align: center;
+  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-decoration: none;
+  opacity: 1;
+  white-space: nowrap;
+  padding: 10px 18px;
+  border-radius: 22px;
+  background: transparent;
+  transition: background 0.15s ease-out, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.headerNav a:hover {
+  background: #1890FF;
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(-2px);
+  animation: messengerLinkHover 0.45s ease-out forwards;
+}
+
+.headerMessengers {
+  position: absolute;
+  top: 66.5%;
+  right: 10.18vw;
+  height: clamp(24px, 4.17vh, 32px);
+  display: flex;
+  align-items: center;
+  gap: 1.46vw;
+  color: #ffffff;
+  text-align: left;
+  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  z-index: 1;
+}
+
+.headerMessengers a,
+.headerMessengers span {
+  color: inherit;
+  text-decoration: none;
+  opacity: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.headerMessengers a:hover,
+.headerMessengers span:hover {
+  opacity: 1;
+}
+
+@keyframes messengerLinkHover {
+  0% {
+    border-radius: 8px;
+  }
+  15% {
+    border-radius: 8px;
+  }
+  100% {
+    border-radius: 22px;
+  }
+}
+
+.headerMessengerLink {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  padding: 10px 18px;
+  border-radius: 22px;
+  background: transparent;
+  transition: background 0.15s ease-out, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.headerMessengerLink:hover {
+  background: #ffffff;
+  color: #000000;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.95), 0 2px 8px rgba(255, 255, 255, 0.4);
+  animation: messengerLinkHover 0.45s ease-out forwards;
+}
+
+.headerMessengerLink:hover .headerMessengerIcon svg {
+  fill: #000000;
+}
+
+.headerMessengerLink:hover .headerMessengerIconTelegram {
+  background: transparent !important;
+}
+
+.headerMessengerLink:hover .headerMessengerIconTelegram svg {
+  fill: #000000;
+}
+
+.headerMessengerIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background: none;
+}
+
+.headerMessengerIcon svg {
+  width: 16px;
+  height: 16px;
+  fill: #1890FF;
+}
+
+.headerMessengerIconTelegram {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerMessengerIconTelegram svg {
+  width: 14px;
+  height: 14px;
+  fill: #1890FF;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.heroTitle {
+  color: #ffffff;
+  font: normal normal bold 56px/1.2 "Segoe UI", sans-serif;
+  text-align: center;
+  margin: 0;
+  max-width: 758px;
+}
+
+.heroSubtitle {
+  color: #ffffff;
+  font: normal normal normal 18px/1.5 "Segoe UI", sans-serif;
+  text-align: center;
+  margin: 23px 0 1.5rem;
+  opacity: 0.95;
+  max-width: 554px;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 408px;
+  height: 53px;
+  margin-top: 48px;
+  padding: 0 32px;
+  box-sizing: border-box;
+  background: #1890FF;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: width 0.25s ease, color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.heroCtaIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.heroCtaIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.heroCta:hover {
+  width: 428px;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.heroBusiness .heroTitle {
+  transition: opacity 0.4s ease;
+  max-width: 1100px;
+}
+
+.heroBusiness .heroSubtitle {
+  transition: opacity 0.4s ease;
+  max-width: 720px;
+}
+
+.heroBusiness .heroCta {
+  width: 500px;
+  min-width: 500px;
+}
+
+.heroBusiness .heroCta:hover {
+  width: 520px;
+  min-width: 520px;
+}
+
+.heroTitleAccent {
+  background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 50%, #1890FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #42a5f5;
+}
+
+.scrollHint {
+  flex-shrink: 0;
+  padding: 1rem 1rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollHintIcon {
+  display: inline-flex;
+  color: #F3F3F3;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.scrollHintIcon:hover {
+  color: #1890FF;
+}
+
+.scrollHintIcon svg {
+  width: 14px;
+  height: 20px;
+}
+
+@media (max-width: 1400px) {
+  .headerPhone {
+    font-size: 12px;
+    gap: 4px;
+    left: 56vw;
+    min-width: auto;
+  }
+
+  .headerEmail {
+    font-size: 12px;
+    gap: 4px;
+    left: 65.5vw;
+    min-width: auto;
+  }
+
+  .headerLangWrap {
+    left: 77.5vw;
+  }
+
+  .headerLoginWrap {
+    right: 9vw;
+  }
+
+  .headerLogin {
+    font-size: 14px;
+  }
+
+  .headerNav {
+    right: 24vw;
+    gap: 0.5% 1.2vw;
+  }
+
+  .headerNav a {
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+
+  .headerMessengers {
+    gap: 1vw;
+    font-size: 11px;
+  }
+
+  .headerMessengerLink {
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .headerLogoText {
+    font-size: 0.9rem;
+  }
+
+  .headerTab:first-child,
+  .headerTab:last-child {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .headerNav a {
+    font-size: 11px;
+  }
+
+  .headerMessengers {
+    gap: 1.2vw;
+  }
+
+  .headerNav {
+    gap: 0.6% 1.4vw;
+    right: 26vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headerNav a {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .headerMessengers {
+    font-size: 11px;
+    gap: 1vw;
+  }
+
+  .headerNav {
+    gap: 0.5% 1.2vw;
+    right: 28vw;
+  }
+
+  .headerPhone {
+    font-size: 11px;
+    left: 55vw;
+  }
+
+  .headerEmail {
+    font-size: 11px;
+    left: 64.5vw;
+  }
+
+  .headerLangWrap {
+    left: 76.5vw;
+  }
+
+  .headerLoginWrap {
+    right: 8vw;
+  }
+
+  .headerLogin {
+    font-size: 13px;
+  }
+
+  .headerTab:first-child,
+  .headerTab:last-child {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .screen {
+    padding-top: 28vh;
+  }
+
+  .logo {
+    top: 28vh;
+    left: 50%;
+    margin-left: -100px;
+  }
+
+  .pageHeader {
+    height: clamp(60px, 10.47vw, 71.5px);
+  }
+
+  .headerNav {
+    right: 18vw;
+    gap: 4px 8px;
+  }
+
+  .headerNav a {
+    font-size: 10px;
+  }
+
+  .headerMessengers {
+    font-size: 10px;
+    gap: 8px;
+  }
+}
