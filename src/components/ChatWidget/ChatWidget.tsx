@@ -1,6 +1,9 @@
 import type { FC } from 'react';
 import styles from './ChatWidget.module.css';
 
+const CHAT_ICON_SVG = '/crypto/' + encodeURIComponent('Компонент 12 – 29.svg');
+const CHAT_ICON_HOVER_SVG = '/crypto/' + encodeURIComponent('Компонент 12 – 29 (Состояние наведения).svg');
+
 const ChatWidget: FC = () => (
   <a
     href="#"
@@ -8,14 +11,8 @@ const ChatWidget: FC = () => (
     aria-label="Открыть чат"
   >
     <span className={styles.widgetCircle}>
-      <span className={styles.widgetIcon} aria-hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-        <circle cx="8.5" cy="11.5" r="0.5" fill="currentColor" />
-        <circle cx="12" cy="11.5" r="0.5" fill="currentColor" />
-        <circle cx="15.5" cy="11.5" r="0.5" fill="currentColor" />
-      </svg>
-      </span>
+      <img src={CHAT_ICON_SVG} alt="" className={styles.widgetIconDefault} aria-hidden />
+      <img src={CHAT_ICON_HOVER_SVG} alt="" className={styles.widgetIconHover} aria-hidden />
     </span>
   </a>
 );

@@ -31,10 +31,20 @@
 }
 
 .logoLink {
-  color: #ffffff;
-  font: 700 1rem/1.2 "Segoe UI", sans-serif;
-  text-decoration: none;
-  white-space: nowrap;
+  display: inline-block;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.logoLink:hover {
+  opacity: 0.9;
+  filter: brightness(1.15);
+}
+
+.logoImg {
+  display: block;
+  width: 80px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .nav {
@@ -43,6 +53,47 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: clamp(6px, 0.84%, 12px) clamp(8px, 1.76vw, 24px);
+}
+
+.messengers {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.76vw, 24px);
+}
+
+.navLinkMessenger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.navLinkMessenger .navLinkIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+}
+
+.navLinkMessenger .navLinkIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.navLinkMessenger .navLinkText {
+  font: 400 12px/22px "Segoe UI", sans-serif;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width 0.35s ease-out, opacity 0.25s ease;
+}
+
+.navLinkMessenger:hover .navLinkText {
+  max-width: 100px;
+  opacity: 1;
 }
 
 .navLink {
@@ -90,9 +141,5 @@
   .navLink {
     font-size: 10px;
     padding: 6px 10px;
-  }
-
-  .logoLink {
-    font-size: 0.9rem;
   }
 }

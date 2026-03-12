@@ -1,4 +1,4 @@
-/* Виджет чата: круг в правом нижнем углу, область 94×89 для зоны нажатия */
+/* Виджет чата: четверть круга в правом нижнем углу, 94×89 по умолчанию, 102×95 при наведении */
 .widget {
   position: fixed;
   right: 0;
@@ -10,33 +10,56 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 
-/* Круг с иконкой */
+.widget:hover {
+  width: 102px;
+  height: 95px;
+}
+
+/* Контейнер под картинки из макета */
 .widgetCircle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #1890FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 94px;
+  height: 89px;
   flex-shrink: 0;
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  display: block;
+  transition: width 0.25s ease, height 0.25s ease;
 }
 
 .widget:hover .widgetCircle {
-  transform: scale(1.1);
-  background: #0a7bd6;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 102px;
+  height: 95px;
 }
 
-.widgetIcon {
-  color: #ffffff;
+.widgetIconDefault {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 94px;
+  height: 89px;
+  object-fit: contain;
+  object-position: right bottom;
+  transition: opacity 0.25s ease;
 }
 
-.widgetIcon svg {
-  width: 36px;
-  height: 36px;
+.widgetIconHover {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 102px;
+  height: 95px;
+  object-fit: contain;
+  object-position: right bottom;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.widget:hover .widgetIconDefault {
+  opacity: 0;
+}
+
+.widget:hover .widgetIconHover {
+  opacity: 1;
 }

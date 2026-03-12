@@ -17,7 +17,17 @@
 .listWrap {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.listWrap::-webkit-scrollbar {
+  display: none;
 }
 
 .title {
@@ -34,10 +44,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: nowrap;
   gap: clamp(24px, 4vw, 40px);
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
+  padding-bottom: 8px;
 }
 
 .card {
@@ -45,6 +57,10 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  flex: 0 0 auto;
+  width: min(320px, 85vw);
+  max-width: 380px;
+  min-width: 0;
 }
 
 .cardHeader {
@@ -125,14 +141,8 @@
   background: rgba(0, 0, 0, 0.35);
 }
 
-@media (max-width: 900px) {
-  .list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 500px) {
-  .list {
-    grid-template-columns: 1fr;
+  .card {
+    width: min(280px, 90vw);
   }
 }

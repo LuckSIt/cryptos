@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import styles from './IntroScreen.module.css';
 
-const LOGO_IMAGE = '/img/logo.png';
+const LOGO_SVG = '/crypto/Компонент%2067%20%E2%80%93%201.svg';
 const VIDEO_SRC = '/img/clouds.mp4';
 const BUSINESS_VIDEO_SRC = '/img/business.mp4';
 
@@ -41,7 +41,7 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const businessVideoRef = useRef<HTMLVideoElement>(null);
   const langCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const showLogo = step >= 1;
+  const showLogo = step >= 1 && step < 3;
   const showVideo = step >= 2;
   const showPage = step >= 3;
   const showBusinessVideo = showPage && audienceMode === 'business';
@@ -126,9 +126,10 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
       </div>
       <div
         className={`${styles.logo} ${showLogo ? styles.logoVisible : ''}`}
-        style={{ backgroundImage: `url(${LOGO_IMAGE})` }}
         aria-hidden
-      />
+      >
+        <img src={LOGO_SVG} alt="" className={styles.logoImg} />
+      </div>
 
       <div
         className={`${styles.page} ${showPage ? styles.pageVisible : ''}`}
@@ -138,7 +139,9 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
         <header className={`${styles.pageHeader} ${audienceMode === 'business' ? styles.pageHeaderBusiness : ''}`}>
           <div className={styles.headerTop}>
             <div className={styles.headerLogo}>
-              <span className={styles.headerLogoText}>Binary Flow</span>
+              <a href="#main" className={styles.headerLogoLink} aria-label="Binary Flow">
+                <img src={LOGO_SVG} alt="" width="80" height="30" className={styles.headerLogoImg} />
+              </a>
             </div>
             <div className={styles.headerTabs}>
               <button
@@ -250,18 +253,18 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
             <div className={styles.headerMessengers}>
               <a href="#" className={styles.headerMessengerLink} aria-label="WhatsApp">
                 <span className={styles.headerMessengerIcon} aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  <svg viewBox="0 0 16 17" fill="currentColor">
+                    <path d="M12.466,9.49c-.218-.09-1.261-.54-1.455-.61s-.332-.09-.481.1-.55.6-.676.73-.241.14-.458,0a6.076,6.076,0,0,1-1.707-.92A5.414,5.414,0,0,1,6.542,7.5c-.126-.18,0-.28.092-.38s.206-.21.321-.32a1.36,1.36,0,0,0,.206-.31.337.337,0,0,0,0-.33c0-.09-.481-1-.665-1.37s-.344-.32-.47-.32H5.568a.881.881,0,0,0-.573.23A1.978,1.978,0,0,0,4.25,6.25,3.339,3.339,0,0,0,5.109,8.2,9.259,9.259,0,0,0,8.765,11c.5.19.894.3,1.2.39a3.307,3.307,0,0,0,1.341.07,2.232,2.232,0,0,0,1.444-.88,1.476,1.476,0,0,0,.126-.88A1.232,1.232,0,0,0,12.466,9.49Z" transform="translate(0 0.552)" />
+                    <path d="M14.229,2.841A7.9,7.9,0,0,0,8.548.5,7.99,7.99,0,0,0,1.664,12.474L.59,16.609l4.231-1.074a7.947,7.947,0,0,0,3.812.967H8.548a7.99,7.99,0,0,0,5.681-13.66ZM8.548,15.127a6.572,6.572,0,0,1-3.383-.934l-.236-.14-2.513.655.666-2.449-.15-.247a6.631,6.631,0,1,1,5.617,3.114Z" />
                   </svg>
                 </span>
                 WhatsApp
               </a>
               <a href="https://t.me/" className={styles.headerMessengerLink} aria-label="Telegram" target="_blank" rel="noopener noreferrer">
                 <span className={`${styles.headerMessengerIcon} ${styles.headerMessengerIconTelegram}`} aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M19.985 5.54a.69.69 0 0 0-.61-.31.78.78 0 0 0-.41.11L3.435 11.23a.75.75 0 0 0 .04 1.36l3.86 1.48 1.48 4.71a.75.75 0 0 0 1.34.22l2.36-3.14 4.5 3.32a.75.75 0 0 0 1.18-.53l2.25-12.51a.75.75 0 0 0-.46-.6zm-9.3 9.45l-.47 1.95-.91-2.91 8.87-6.04-7.49 7z" />
+                  <svg viewBox="2136 -4 24 24" fill="currentColor">
+                    <path transform="translate(2138 -4)" d="M17.636,7.118s1.48-.577,1.357.824c-.041.577-.411,2.6-.7,4.782L17.307,19.2s-.082.948-.822,1.113a3.276,3.276,0,0,1-2.056-.742c-.164-.124-3.084-1.979-4.111-2.886a.782.782,0,0,1,.041-1.319l4.317-4.122c.493-.495.987-1.649-1.069-.247L7.851,14.909a2.41,2.41,0,0,1-1.891.041l-2.672-.824s-.987-.618.7-1.237C8.1,10.952,13.154,8.973,17.636,7.118Z" />
                   </svg>
-
                 </span>
                 Telegram
               </a>
