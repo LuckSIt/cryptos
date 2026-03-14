@@ -30,7 +30,7 @@ const FlagUS = () => (
 const LANG_CLOSE_DELAY_MS = 200;
 
 type IntroScreenProps = {
-  onReachMainPage?: () => void;
+  onReachMainPage?: (audienceMode: AudienceMode) => void;
 };
 
 const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
@@ -47,8 +47,8 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
   const showBusinessVideo = showPage && audienceMode === 'business';
 
   useEffect(() => {
-    if (step === 3) onReachMainPage?.();
-  }, [step, onReachMainPage]);
+    if (step === 3) onReachMainPage?.(audienceMode);
+  }, [step, audienceMode, onReachMainPage]);
 
   const clearLangCloseTimeout = useCallback(() => {
     if (langCloseTimeoutRef.current !== null) {

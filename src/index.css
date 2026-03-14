@@ -33,3 +33,42 @@ main {
     padding-top: 52px;
   }
 }
+
+/* Business layout: video background */
+.app-businessLayout {
+  position: relative;
+  min-height: 100vh;
+}
+
+.app-businessVideoWrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app-businessVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-businessVideoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 25, 55, 0.55);
+  pointer-events: none;
+}
+
+.app-businessContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* В режиме Бизнесу main прозрачный — видно видео и карту поверх */
+.app-businessLayout main {
+  background: transparent;
+}

@@ -5,11 +5,12 @@ const LOGO_SVG = '/crypto/Компонент%2067%20%E2%80%93%201.svg';
 
 type HeaderProps = {
   visible?: boolean;
+  variant?: 'buyer' | 'business';
 };
 
-const Header: FC<HeaderProps> = ({ visible = true }) => (
+const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => (
   <header
-    className={`${styles.header} ${visible ? styles.headerVisible : ''}`}
+    className={`${styles.header} ${visible ? styles.headerVisible : ''} ${variant === 'business' ? styles.headerBusiness : ''}`}
     role="banner"
     aria-hidden={!visible}
   >

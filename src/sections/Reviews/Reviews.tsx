@@ -20,7 +20,10 @@ const LOOP_ITEMS = Array.from({ length: LOOP_COPIES }, () => REVIEWS).flat().map
 
 const PAGES_COUNT = REVIEWS.length;
 
-const Reviews: FC = () => {
+type ReviewsProps = { variant?: 'buyer' | 'business' };
+
+const Reviews: FC<ReviewsProps> = ({ variant = 'buyer' }) => {
+  const isBusiness = variant === 'business';
   const [currentPage, setCurrentPage] = useState(0);
   const listWrapRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +81,7 @@ const Reviews: FC = () => {
   }, []);
 
   return (
-    <section id="reviews" className={styles.section}>
+    <section id="reviews" className={`${styles.section} ${isBusiness ? styles.sectionBusiness : ''}`}>
       <div className={styles.content}>
         <h2 className={styles.title}>Отзывы</h2>
         <div ref={listWrapRef} className={styles.listWrap} onScroll={handleScroll}>

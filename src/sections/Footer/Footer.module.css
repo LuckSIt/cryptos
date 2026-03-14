@@ -6,36 +6,82 @@
   box-sizing: border-box;
 }
 
+.footerBusiness {
+  background: rgba(0, 15, 35, 0.5);
+}
+
+.footerBusiness .partnersBar {
+  background: rgba(0, 15, 35, 0.5);
+}
+
 .partnersBar {
   width: 100%;
   background: #0a0a0a;
-  padding: 24px clamp(24px, 5vw, 80px);
+  padding: 24px 0;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.partnersBarTrack {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: clamp(32px, 5vw, 64px);
+  padding: 0 clamp(24px, 5vw, 80px);
+  box-sizing: border-box;
+  animation: partnersScroll 30s linear infinite;
+}
+
+/* Нулевой spacer даёт последний gap в периоде для ровного зацикливания */
+.partnerTrackSpacer {
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Сдвиг на один период (5 логотипов + 5 интервалов) = 1/PARTNER_STRIP_COPIES */
+@keyframes partnersScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+.partnerLogoWrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(28px, 5vw, 56px);
-  flex-wrap: nowrap;
-  border-bottom: 1px solid rgba(24, 144, 255, 0.35);
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.partnerLogo {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
   flex-shrink: 0;
-  filter: grayscale(1);
-  opacity: 0.85;
+  height: 32px;
 }
 
-.partnerLogo:hover {
-  color: rgba(255, 255, 255, 0.75);
+.partnerLogoWrap img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.25s ease;
+}
+
+/* Основное изображение в потоке — задаёт ширину контейнера */
+.partnerLogoImg {
+  display: block;
+}
+
+.partnerLogoImgHover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.partnerLogoWrap:hover .partnerLogoImg {
+  opacity: 0;
+}
+
+.partnerLogoWrap:hover .partnerLogoImgHover {
   opacity: 1;
-  filter: grayscale(0.6);
 }
 
 .scrollTopWrap {

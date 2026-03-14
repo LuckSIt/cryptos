@@ -17,7 +17,10 @@ const LOOP_ITEMS = Array.from({ length: LOOP_COPIES }, () => NEWS_ITEMS).flat().
 
 const PAGES_COUNT = NEWS_ITEMS.length;
 
-const News: FC = () => {
+type NewsProps = { variant?: 'buyer' | 'business' };
+
+const News: FC<NewsProps> = ({ variant = 'buyer' }) => {
+  const isBusiness = variant === 'business';
   const [currentPage, setCurrentPage] = useState(0);
   const listWrapRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +78,7 @@ const News: FC = () => {
   }, []);
 
   return (
-    <section id="news" className={styles.section}>
+    <section id="news" className={`${styles.section} ${isBusiness ? styles.sectionBusiness : ''}`}>
       <div className={styles.content}>
         <h2 className={styles.title}>Новости</h2>
         <div ref={listWrapRef} className={styles.listWrap} onScroll={handleScroll}>

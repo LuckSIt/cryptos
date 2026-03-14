@@ -22,6 +22,10 @@
   visibility: visible;
 }
 
+.headerBusiness {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 .header:not(.headerVisible) {
   pointer-events: none;
 }

@@ -8,6 +8,12 @@
   flex-direction: column;
 }
 
+.sectionBusiness {
+  background: #1890FF;
+  position: relative;
+  opacity: 0.7;
+}
+
 .content {
   flex: 1;
   display: flex;
@@ -38,6 +44,11 @@
   line-height: 1.2;
   color: rgba(255, 255, 255, 0.9);
   opacity: 0.4;
+}
+
+.sectionBusiness .title {
+  color: #ffffff;
+  opacity: 1;
 }
 
 .list {
@@ -72,7 +83,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #ffffff;
-  background: #1890FF;
+  background: #117fe6;
   border: none;
   border-radius: 999px;
   text-decoration: none;
@@ -85,6 +96,7 @@
 .article:hover .readBtn {
   opacity: 1;
 }
+
 
 .readBtn:hover {
   background: #ffffff;
@@ -139,6 +151,19 @@
 .dotActive {
   background: #1890FF;
   width: 28px;
+}
+
+.sectionBusiness .dot {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.sectionBusiness .dotActive {
+  background: #ffffff;
+  width: 28px;
+}
+
+.sectionBusiness .dot:hover:not(.dotActive) {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .dot:hover:not(.dotActive) {

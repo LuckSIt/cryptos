@@ -8,6 +8,47 @@
   flex-direction: column;
 }
 
+.sectionBusiness {
+  background: transparent;
+}
+
+.sectionBusiness .title {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.sectionBusiness .avatar {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.sectionBusiness .cardName {
+  color: #ffffff;
+}
+
+.sectionBusiness .cardDate {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sectionBusiness .cardText {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sectionBusiness .dot {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.sectionBusiness .dotActive {
+  background: #1890FF;
+}
+
+.sectionBusiness .dot:hover:not(.dotActive) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sectionBusiness .pagination {
+  display: none;
+}
+
 .content {
   flex: 1;
   display: flex;

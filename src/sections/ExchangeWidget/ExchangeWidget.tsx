@@ -2,7 +2,12 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import type { FC } from 'react';
 import styles from './ExchangeWidget.module.css';
 
+const SWAP_ICON_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width.svg');
+const SWAP_ICON_HOVER_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width (Состояние наведения).svg');
+
 const TABS = ['All', 'Crypto', 'Fiat', 'Stable', 'Cash'] as const;
+const TABS_BUSINESS = ['Fiat', 'Crypto', 'Stable'] as const;
+const TAB_LABELS_BUSINESS: Record<string, string> = { Fiat: 'Безнал', Crypto: 'Крипто', Stable: 'Стейбл' };
 
 const SEND_OPTIONS = ['Сбербанк', 'Тинькоф', 'Альфа-банк', 'Райффайзен', 'ПСБ', 'ВТБ'] as const;
 const RECEIVE_OPTIONS = ['USDT Tether TRC-20', 'Bitcoin BTC', 'Ethereum ETH', 'BNB BNB', 'XRP XRP', 'Solana SOL'] as const;
@@ -55,7 +60,13 @@ const renderOptionLabel = (text: string, isTrigger = true) => {
   );
 };
 
-const ExchangeWidget: FC = () => {
+type ExchangeWidgetProps = { variant?: 'buyer' | 'business' };
+
+const ExchangeWidget: FC<ExchangeWidgetProps> = ({ variant = 'buyer' }) => {
+  const isBusiness = variant === 'business';
+  const visibleTabs = isBusiness ? (TABS_BUSINESS as unknown as readonly string[]) : TABS;
+  const getTabLabel = (tab: string) => (isBusiness ? TAB_LABELS_BUSINESS[tab] ?? tab : tab);
+
   const [sendTab, setSendTab] = useState<(typeof TABS)[number]>('Fiat');
   const [receiveTab, setReceiveTab] = useState<(typeof TABS)[number]>('Crypto');
   const [sendAmount, setSendAmount] = useState('100');
@@ -162,7 +173,7 @@ const ExchangeWidget: FC = () => {
     <section
           ref={sectionRef}
           id="exchange"
-          className={`${styles.section} ${instructionExpanded ? styles.sectionInstructionOpen : ''}`}
+          className={`${styles.section} ${instructionExpanded ? styles.sectionInstructionOpen : ''} ${isBusiness ? styles.sectionBusiness : ''}`}
           aria-labelledby="exchange-title"
         >
       <div className={styles.sectionInner}>
@@ -173,16 +184,16 @@ const ExchangeWidget: FC = () => {
               Отправляете
             </h2>
             <div className={styles.tabs} role="tablist">
-              {TABS.map((tab) => (
+              {visibleTabs.map((tab) => (
                 <button
                   key={tab}
                   type="button"
                   role="tab"
                   aria-selected={sendTab === tab}
                   className={sendTab === tab ? `${styles.tab} ${styles.tabActive}` : styles.tab}
-                  onClick={() => setSendTab(tab)}
+                  onClick={() => setSendTab(tab as (typeof TABS)[number])}
                 >
-                  {tab}
+                  {getTabLabel(tab)}
                 </button>
               ))}
             </div>
@@ -241,7 +252,11 @@ const ExchangeWidget: FC = () => {
               </div>
               <p id="send-error" className={styles.error}>
                 <span className={styles.errorIcon} aria-hidden />
-                Сумма должна быть больше <strong>15 000</strong> {getCurrencyLabel(sendOption)}
+                {isBusiness ? (
+                  <>Сумма должна быть больше <strong>15 000 000</strong> {getCurrencyLabel(sendOption)}</>
+                ) : (
+                  <>Сумма должна быть больше <strong>15 000</strong> {getCurrencyLabel(sendOption)}</>
+                )}
               </p>
             </div>
             <div className={styles.inputWrap}>
@@ -256,7 +271,11 @@ const ExchangeWidget: FC = () => {
               </div>
               <p className={styles.error}>
                 <span className={styles.errorIcon} aria-hidden />
-                Сумма должна быть больше <strong>15 000</strong> {getCurrencyLabel(sendOption)}
+                {isBusiness ? (
+                  <>Сумма должна быть больше <strong>15 000 000</strong> {getCurrencyLabel(sendOption)}</>
+                ) : (
+                  <>Сумма должна быть больше <strong>15 000</strong> {getCurrencyLabel(sendOption)}</>
+                )}
               </p>
             </div>
           </div>
@@ -268,12 +287,10 @@ const ExchangeWidget: FC = () => {
               aria-label="Поменять местами"
               onClick={handleSwap}
             >
-              <svg className={styles.swapIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 6v12M22 6v12" />
-                <path d="M6 12h12" />
-                <path d="M6 10L3 12L6 14" />
-                <path d="M18 10L21 12L18 14" />
-              </svg>
+              <span className={styles.swapIconWrap}>
+                <img src={SWAP_ICON_SVG} alt="" className={styles.swapIconDefault} aria-hidden />
+                <img src={SWAP_ICON_HOVER_SVG} alt="" className={styles.swapIconHover} aria-hidden />
+              </span>
             </button>
           </div>
 
@@ -282,16 +299,16 @@ const ExchangeWidget: FC = () => {
               Получаете
             </h2>
             <div className={styles.tabs} role="tablist">
-              {TABS.map((tab) => (
+              {visibleTabs.map((tab) => (
                 <button
                   key={tab}
                   type="button"
                   role="tab"
                   aria-selected={receiveTab === tab}
                   className={receiveTab === tab ? `${styles.tab} ${styles.tabActive}` : styles.tab}
-                  onClick={() => setReceiveTab(tab)}
+                  onClick={() => setReceiveTab(tab as (typeof TABS)[number])}
                 >
-                  {tab}
+                  {getTabLabel(tab)}
                 </button>
               ))}
             </div>
@@ -350,7 +367,11 @@ const ExchangeWidget: FC = () => {
               </div>
               <p id="receive-error" className={styles.error}>
                 <span className={styles.errorIcon} aria-hidden />
-                Сумма должна быть больше <strong>200</strong> {getCurrencyLabel(receiveOption)}
+                {isBusiness ? (
+                  <>Сумма должна быть больше <strong>200 000</strong> {getCurrencyLabel(receiveOption)}</>
+                ) : (
+                  <>Сумма должна быть больше <strong>200</strong> {getCurrencyLabel(receiveOption)}</>
+                )}
               </p>
             </div>
             <div className={styles.infoBlock}>
@@ -372,11 +393,12 @@ const ExchangeWidget: FC = () => {
 
           <div className={styles.ctaWrap}>
             <a href="#exchange" className={styles.cta}>
-              Обменять криптовалюту
+              {isBusiness ? 'Получить офер' : 'Обменять криптовалюту'}
             </a>
           </div>
         </div>
 
+        {!isBusiness && (
         <div
             id="rules"
             ref={instructionWrapRef}
@@ -429,9 +451,10 @@ const ExchangeWidget: FC = () => {
             </div>
           )}
         </div>
+        )}
       </div>
 
-      {instructionExpanded && (
+      {!isBusiness && instructionExpanded && (
         <div
           className={styles.instructionBackdrop}
           style={{ top: backdropTop, clipPath: backdropClip ?? undefined }}
