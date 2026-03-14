@@ -132,23 +132,49 @@
   margin-bottom: clamp(32px, 4vw, 48px);
 }
 
-.brandLink {
-  font-family: 'Segoe UI', sans-serif;
-  font-weight: 700;
-  font-size: clamp(20px, 2.5vw, 28px);
-  color: #ffffff;
+.brandLogoLink {
+  display: inline-block;
+  position: relative;
   text-decoration: none;
+}
+
+.brandLogoLink img {
+  display: block;
+  height: clamp(28px, 3vw, 36px);
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.25s ease;
+}
+
+.brandLogoImgHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.brandLogoLink:hover .brandLogoImg {
+  opacity: 0;
+}
+
+.brandLogoLink:hover .brandLogoImgHover {
+  opacity: 1;
 }
 
 .columns {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: auto auto 1fr;
   gap: clamp(32px, 5vw, 64px);
   margin-bottom: clamp(40px, 5vw, 56px);
+  align-items: start;
+}
+
+.columnLeft {
+  text-align: left;
 }
 
 .columnTitle {
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   font-family: 'Segoe UI', sans-serif;
   font-weight: 700;
   font-size: 17px;
@@ -156,15 +182,32 @@
 }
 
 .columnText {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-family: 'Segoe UI', sans-serif;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.columnTextBreak {
+  margin-top: 20px;
+  margin-bottom: 6px;
 }
 
 .columnText strong {
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.columnLink {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.columnLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .linksWrap {

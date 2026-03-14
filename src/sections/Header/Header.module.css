@@ -36,12 +36,7 @@
 
 .logoLink {
   display: inline-block;
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.logoLink:hover {
-  opacity: 0.9;
-  filter: brightness(1.15);
+  position: relative;
 }
 
 .logoImg {
@@ -49,6 +44,26 @@
   width: 80px;
   height: 30px;
   object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.logoImgHover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 30px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.logoLink:hover .logoImg {
+  opacity: 0;
+}
+
+.logoLink:hover .logoImgHover {
+  opacity: 1;
 }
 
 .nav {

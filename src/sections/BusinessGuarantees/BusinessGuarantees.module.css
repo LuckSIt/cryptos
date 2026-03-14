@@ -1,7 +1,11 @@
 .section {
   width: 100%;
+  min-height: 100vh;
   padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 80px);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
@@ -15,7 +19,7 @@
 }
 
 .intro {
-  margin: 0 auto clamp(32px, 5vh, 48px);
+  margin: 0 auto clamp(200px, 8vh, 72px);
   max-width: 904px;
   font-family: 'Segoe UI', sans-serif;
   font-size: 14px;
@@ -28,45 +32,64 @@
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+  padding-top: 48px;
   display: grid;
   grid-template-columns: repeat(4, 260px);
-  gap: 16px;
+  grid-template-rows: 320px;
+  gap: 20px;
+  align-items: end;
+  overflow: visible;
 }
 
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: stretch;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(24, 144, 255, 0.35);
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: none;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  min-height: 320px;
+  background: rgba(28, 46, 66, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: visible;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: min-height 0.4s ease-out, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(24, 144, 255, 0.5);
+  min-height: 360px;
+  background: rgba(36, 52, 72, 0.95);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
+/* Зона картинки — верхняя треть карточки по макету */
 .cardImageWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
   display: block;
   flex-shrink: 0;
+  overflow: visible;
+  margin-top: -40%;
+  margin-bottom: -4%;
 }
 
 .cardImageDefault,
 .cardImageHover {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  left: 50%;
+  top: 42%;
+  width: 78%;
+  height: 78%;
+  transform: translate(-50%, -50%) scale(1.05);
   object-fit: contain;
   object-position: center;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.4s ease-out;
+}
+
+.card:hover .cardImageDefault,
+.card:hover .cardImageHover {
+  transform: translate(-50%, -50%) scale(1.12);
 }
 
 .cardImageHover {
@@ -82,10 +105,10 @@
 }
 
 .cardContent {
-  padding: 20px 28px 24px;
+  padding: 0 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
 }
 
@@ -96,6 +119,8 @@
   font-size: 18px;
   line-height: 1.3;
   color: #ffffff;
+  text-align: center;
+  white-space: pre-line;
 }
 
 .cardDescription {
@@ -104,6 +129,7 @@
   font-size: 14px;
   line-height: 1.5;
   color: #ffffff;
+  text-align: center;
 }
 
 @media (max-width: 1180px) {

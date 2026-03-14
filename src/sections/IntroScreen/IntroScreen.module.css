@@ -146,17 +146,15 @@
 
 .headerLogoLink {
   display: inline-block;
-  transition: opacity 0.2s ease, filter 0.2s ease;
+  position: relative;
 }
 
-.headerLogoLink:hover {
-  opacity: 0.9;
-  filter: brightness(1.15);
+.headerLogoLink:hover .headerLogoImg {
+  opacity: 0;
 }
 
-.pageHeaderBusiness .headerLogoLink:hover {
+.headerLogoLink:hover .headerLogoImgHover {
   opacity: 1;
-  filter: brightness(1.2);
 }
 
 .headerLogoImg {
@@ -164,6 +162,26 @@
   width: 80px;
   height: 30px;
   object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.headerLogoImgHover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 30px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pageHeaderBusiness .headerLogoLink:hover .headerLogoImg {
+  opacity: 0;
+}
+
+.pageHeaderBusiness .headerLogoLink:hover .headerLogoImgHover {
+  opacity: 1;
 }
 
 .headerLogoText {

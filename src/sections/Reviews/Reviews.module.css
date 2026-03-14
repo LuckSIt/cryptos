@@ -18,7 +18,7 @@
 }
 
 .sectionBusiness .avatar {
-  background: rgba(255, 255, 255, 0.9);
+  filter: brightness(1.1);
 }
 
 .sectionBusiness .cardName {
@@ -55,20 +55,32 @@
   flex-direction: column;
 }
 
-.listWrap {
+.gridWrap {
   flex: 1;
+  min-height: 0;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.listWrap::-webkit-scrollbar {
+.gridWrap::-webkit-scrollbar {
   display: none;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(280px, 320px));
+  gap: clamp(24px, 4vw, 40px);
+  width: max-content;
+  max-width: none;
 }
 
 .title {
@@ -81,26 +93,11 @@
   opacity: 0.5;
 }
 
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: clamp(24px, 4vw, 40px);
-  width: max-content;
-  min-width: 100%;
-  padding-bottom: 8px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  flex: 0 0 auto;
-  width: min(320px, 85vw);
-  max-width: 380px;
   min-width: 0;
 }
 
@@ -115,7 +112,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #9e9e9e;
+  object-fit: cover;
   flex-shrink: 0;
 }
 

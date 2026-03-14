@@ -3,6 +3,9 @@ import styles from './Footer.module.css';
 
 const CRYPTO_PATH = '/crypto/';
 
+const FLAREX_LOGO = 'Компонент 12 – 30.svg';
+const FLAREX_LOGO_HOVER = 'Компонент 12 – 30 (Состояние наведения).svg';
+
 const PARTNER_LOGOS = [
   { image: 'binance.svg', imageHover: 'binance (Состояние наведения).svg', name: 'Binance' },
   { image: 'Компонент 12 – 30.svg', imageHover: 'Компонент 12 – 30 (Состояние наведения).svg', name: 'РБК' },
@@ -52,28 +55,38 @@ const Footer: FC<FooterProps> = ({ variant = 'buyer' }) => {
       <div id="contacts" className={styles.mainBlock}>
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <a href="#main" className={styles.brandLink}>
-              Binary Flow
+            <a href="#main" className={styles.brandLogoLink}>
+              <img
+                src={CRYPTO_PATH + encodeURIComponent(FLAREX_LOGO)}
+                alt="Flarex"
+                className={styles.brandLogoImg}
+              />
+              <img
+                src={CRYPTO_PATH + encodeURIComponent(FLAREX_LOGO_HOVER)}
+                alt=""
+                className={styles.brandLogoImgHover}
+                aria-hidden
+              />
             </a>
           </div>
 
           <div className={styles.columns}>
-            <div>
+            <div className={styles.columnLeft}>
               <h3 className={styles.columnTitle}>Техническая поддержка</h3>
+              <p className={styles.columnText}><strong>Время работы:</strong></p>
+              <p className={styles.columnText}>Ежедневно с 11:00 до 22:00</p>
+              <p className={`${styles.columnText} ${styles.columnTextBreak}`}><strong>Поддержка по почте:</strong></p>
               <p className={styles.columnText}>
-                <strong>Время работы:</strong> Ежедневно с 11:00 до 22:00
-              </p>
-              <p className={styles.columnText}>
-                <strong>Поддержка по почте:</strong> support@binaryflow.example
+                <a href="mailto:support@flarex.pro" className={styles.columnLink}>support@flarex.pro</a>
               </p>
             </div>
-            <div>
+            <div className={styles.columnLeft}>
               <h3 className={styles.columnTitle}>Сотрудничество и PR</h3>
+              <p className={styles.columnText}><strong>Время работы:</strong></p>
+              <p className={styles.columnText}>Ежедневно с 11:00 до 22:00</p>
+              <p className={`${styles.columnText} ${styles.columnTextBreak}`}><strong>Поддержка по почте:</strong></p>
               <p className={styles.columnText}>
-                <strong>Время работы:</strong> Ежедневно с 11:00 до 22:00
-              </p>
-              <p className={styles.columnText}>
-                <strong>Поддержка по почте:</strong> support@binaryflow.example
+                <a href="mailto:support@flarex.pro" className={styles.columnLink}>support@flarex.pro</a>
               </p>
             </div>
             <nav aria-label="Футер" className={styles.linksWrap}>
@@ -90,7 +103,7 @@ const Footer: FC<FooterProps> = ({ variant = 'buyer' }) => {
           </div>
 
           <p className={styles.copyright}>
-            Binary Flow – Сервис обмена электронных валют. Copyright © 2026
+            Flarex Pro — Сервис обмена электронных валют. Copyright © 2026
           </p>
         </div>
       </div>

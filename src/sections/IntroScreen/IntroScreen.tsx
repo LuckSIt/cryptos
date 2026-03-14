@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import styles from './IntroScreen.module.css';
 
 const LOGO_SVG = '/crypto/Компонент%2067%20%E2%80%93%201.svg';
+const LOGO_HOVER_SVG = '/crypto/' + encodeURIComponent('Компонент 67 – 1 (Состояние наведения).svg');
 const VIDEO_SRC = '/img/clouds.mp4';
 const BUSINESS_VIDEO_SRC = '/img/business.mp4';
 
@@ -141,6 +142,7 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
             <div className={styles.headerLogo}>
               <a href="#main" className={styles.headerLogoLink} aria-label="Binary Flow">
                 <img src={LOGO_SVG} alt="" width="80" height="30" className={styles.headerLogoImg} />
+                <img src={LOGO_HOVER_SVG} alt="" width="80" height="30" className={styles.headerLogoImgHover} />
               </a>
             </div>
             <div className={styles.headerTabs}>

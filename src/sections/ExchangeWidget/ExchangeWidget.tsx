@@ -6,8 +6,8 @@ const SWAP_ICON_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-colu
 const SWAP_ICON_HOVER_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width (Состояние наведения).svg');
 
 const TABS = ['All', 'Crypto', 'Fiat', 'Stable', 'Cash'] as const;
-const TABS_BUSINESS = ['Fiat', 'Crypto', 'Stable'] as const;
-const TAB_LABELS_BUSINESS: Record<string, string> = { Fiat: 'Безнал', Crypto: 'Крипто', Stable: 'Стейбл' };
+const TABS_BUSINESS = ['Cashless payment', 'Crypto', 'Stable'] as const;
+const TAB_LABELS_BUSINESS: Record<string, string> = { Fiat: 'Безнал', Fiat1: 'Крипто', Fiat2: 'Стейбл' };
 
 const SEND_OPTIONS = ['Сбербанк', 'Тинькоф', 'Альфа-банк', 'Райффайзен', 'ПСБ', 'ВТБ'] as const;
 const RECEIVE_OPTIONS = ['USDT Tether TRC-20', 'Bitcoin BTC', 'Ethereum ETH', 'BNB BNB', 'XRP XRP', 'Solana SOL'] as const;

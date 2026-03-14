@@ -29,34 +29,28 @@ const BusinessHowWeWork: FC = () => (
     <h2 id="how-we-work-title" className={styles.title}>
       Как мы работаем
     </h2>
+    <div className={styles.timelineContentWrap}>
     <div className={styles.timelineWrap}>
-      <div className={styles.titlesRow}>
-        {STEPS.map(({ title }, i) => (
-          <h3 key={i} className={styles.stepTitle}>{title}</h3>
-        ))}
-      </div>
-      <div className={styles.lineRow}>
-        <img
-          src="/crypto/Линия 1.svg"
-          alt=""
-          className={styles.timelineLine}
-          aria-hidden
-        />
-        <div className={styles.markersWrap}>
-          <ol className={styles.markers} role="list">
-            {STEPS.map((_, i) => (
-              <li key={i}>
-                <span className={styles.stepMarker} aria-hidden />
-              </li>
-            ))}
-          </ol>
+      <div className={styles.lineRowWrapper}>
+        <div className={styles.lineRow}>
+          <img
+            src="/crypto/Линия 1.svg"
+            alt=""
+            className={styles.timelineLine}
+            aria-hidden
+          />
         </div>
       </div>
-      <div className={styles.descriptionsRow}>
-        {STEPS.map(({ description }, i) => (
-          <p key={i} className={styles.stepDescription}>{description}</p>
-        ))}
-      </div>
+      {STEPS.map((step, i) => (
+        <div key={i} className={styles.stepCard}>
+          <h3 className={styles.stepTitle}>{step.title}</h3>
+          <div className={styles.markerCell}>
+            <span className={styles.stepMarker} aria-hidden />
+          </div>
+          <p className={styles.stepDescription}>{step.description}</p>
+        </div>
+      ))}
+    </div>
     </div>
   </section>
 );

@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import styles from './Header.module.css';
 
 const LOGO_SVG = '/crypto/Компонент%2067%20%E2%80%93%201.svg';
+const LOGO_HOVER_SVG = '/crypto/' + encodeURIComponent('Компонент 67 – 1 (Состояние наведения).svg');
 
 type HeaderProps = {
   visible?: boolean;
@@ -17,6 +18,7 @@ const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => (
     <div className={styles.logo}>
       <a href="#main" className={styles.logoLink} aria-label="Binary Flow">
         <img src={LOGO_SVG} alt="" width="80" height="30" className={styles.logoImg} />
+        <img src={LOGO_HOVER_SVG} alt="" width="80" height="30" className={styles.logoImgHover} />
       </a>
     </div>
     <nav className={styles.nav} aria-label="Основное меню">

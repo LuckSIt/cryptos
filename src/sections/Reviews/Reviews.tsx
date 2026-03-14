@@ -2,103 +2,108 @@ import type { FC } from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './Reviews.module.css';
 
+const AVATAR_SVG = '/crypto/' + encodeURIComponent('Avatar - Circle - Icon - Medium.svg');
+
 const REVIEW_TEXT =
   'Continually fashion strategic metrics through interdependent partnerships. Dramatically disseminate enterprise-wide initiatives vis-a-vis distributed alignments. Phosfluorescently leverage existing revolutionary alignments rather';
 
-const REVIEWS = Array.from({ length: 6 }, (_, i) => ({
+const REVIEWS = Array.from({ length: 12 }, (_, i) => ({
   id: i + 1,
   name: 'Han Solo',
-  date: '2 days ago',
+  date: i % 3 === 0 ? '2 days ago' : i % 3 === 1 ? '5 days ago' : '7 days ago',
   text: REVIEW_TEXT,
 }));
 
-const LOOP_COPIES = 3;
-const LOOP_ITEMS = Array.from({ length: LOOP_COPIES }, () => REVIEWS).flat().map((item, index) => ({
-  ...item,
-  key: `${item.id}-${Math.floor(index / REVIEWS.length)}-${index}`,
-}));
-
-const PAGES_COUNT = REVIEWS.length;
+const LOOP_COPIES = 2;
+const PAGES_COUNT = 2;
 
 type ReviewsProps = { variant?: 'buyer' | 'business' };
 
 const Reviews: FC<ReviewsProps> = ({ variant = 'buyer' }) => {
   const isBusiness = variant === 'business';
   const [currentPage, setCurrentPage] = useState(0);
-  const listWrapRef = useRef<HTMLDivElement>(null);
+  const gridWrapRef = useRef<HTMLDivElement>(null);
 
-  const setScrollToMiddleSet = useCallback(() => {
-    const el = listWrapRef.current;
+  const updatePageFromScroll = useCallback(() => {
+    const el = gridWrapRef.current;
     if (!el) return;
-    const totalSetWidth = el.scrollWidth / LOOP_COPIES;
-    el.scrollLeft = totalSetWidth;
-  }, []);
-
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => setScrollToMiddleSet());
-    return () => cancelAnimationFrame(raf);
-  }, [setScrollToMiddleSet]);
-
-  const handleScroll = useCallback(() => {
-    const el = listWrapRef.current;
-    if (!el) return;
-    const totalSetWidth = el.scrollWidth / LOOP_COPIES;
-    let { scrollLeft } = el;
-    if (scrollLeft <= 0) {
-      el.scrollLeft = totalSetWidth * 2 - 2;
-      scrollLeft = totalSetWidth * 2 - 2;
-    } else if (scrollLeft >= totalSetWidth * 2 - 1) {
-      el.scrollLeft = totalSetWidth;
-      scrollLeft = totalSetWidth;
-    }
-    const positionInSet = totalSetWidth > 0 ? Math.min(1, (scrollLeft - totalSetWidth) / totalSetWidth) : 0;
-    const page = Math.max(0, Math.min(PAGES_COUNT - 1, Math.floor(positionInSet * PAGES_COUNT)));
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    if (maxScroll <= 0) return;
+    const page = el.scrollLeft < maxScroll / 2 ? 0 : 1;
     setCurrentPage(page);
   }, []);
 
+  const handleScroll = useCallback(() => {
+    updatePageFromScroll();
+  }, [updatePageFromScroll]);
+
   const handleWheel = useCallback((e: WheelEvent) => {
-    const el = listWrapRef.current;
+    const el = gridWrapRef.current;
     if (!el || !e.deltaY) return;
     const hasHorizontalScroll = el.scrollWidth > el.clientWidth;
     if (!hasHorizontalScroll) return;
     e.preventDefault();
+    const setWidth = el.scrollWidth / LOOP_COPIES;
+    const maxScroll = el.scrollWidth - el.clientWidth;
     el.scrollLeft += e.deltaY;
+    if (el.scrollLeft >= maxScroll) {
+      el.scrollLeft -= setWidth;
+    } else if (el.scrollLeft <= 0) {
+      el.scrollLeft += setWidth;
+    }
+    updatePageFromScroll();
+  }, [updatePageFromScroll]);
+
+  const scrollToPage = useCallback((page: number) => {
+    const el = gridWrapRef.current;
+    if (!el) return;
+    const setWidth = el.scrollWidth / LOOP_COPIES;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const targetLeft = maxScroll <= 0 ? 0 : (page === 0 ? 0 : maxScroll);
+    el.scrollTo({ left: targetLeft, behavior: 'smooth' });
+    setCurrentPage(page);
   }, []);
 
   useEffect(() => {
-    const el = listWrapRef.current;
+    const el = gridWrapRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    const el = gridWrapRef.current;
     if (!el) return;
     el.addEventListener('wheel', handleWheel, { passive: false });
     return () => el.removeEventListener('wheel', handleWheel);
   }, [handleWheel]);
 
-  const scrollToPage = useCallback((pageIndex: number) => {
-    const el = listWrapRef.current;
-    if (!el) return;
-    const totalSetWidth = el.scrollWidth / LOOP_COPIES;
-    const targetScroll = totalSetWidth + (pageIndex / PAGES_COUNT) * totalSetWidth;
-    el.scrollTo({ left: targetScroll, behavior: 'smooth' });
-  }, []);
-
   return (
     <section id="reviews" className={`${styles.section} ${isBusiness ? styles.sectionBusiness : ''}`}>
       <div className={styles.content}>
         <h2 className={styles.title}>Отзывы</h2>
-        <div ref={listWrapRef} className={styles.listWrap} onScroll={handleScroll}>
-          <ul className={styles.list}>
-            {LOOP_ITEMS.map(({ key, id, name, date, text }) => (
-              <li key={key} className={styles.card}>
-                <div className={styles.cardHeader}>
-                  <div className={styles.avatar} aria-hidden />
-                  <div className={styles.cardMeta}>
-                    <span className={styles.cardName}>{name}</span>
-                    <span className={styles.cardDate}>{date}</span>
-                  </div>
+        <div ref={gridWrapRef} className={styles.gridWrap}>
+        <ul className={styles.grid}>
+          {Array.from({ length: LOOP_COPIES }, () => REVIEWS).flat().map(({ id, name, date, text }, index) => (
+            <li key={`${id}-${index}`} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <img
+                  src={AVATAR_SVG}
+                  alt=""
+                  className={styles.avatar}
+                  width={48}
+                  height={48}
+                  aria-hidden
+                />
+                <div className={styles.cardMeta}>
+                  <span className={styles.cardName}>{name}</span>
+                  <span className={styles.cardDate}>{date}</span>
                 </div>
-                <p className={styles.cardText}>{text}</p>
-              </li>
-            ))}
-          </ul>
+              </div>
+              <p className={styles.cardText}>{text}</p>
+            </li>
+          ))}
+        </ul>
         </div>
       </div>
       <div className={styles.pagination} role="tablist" aria-label="Страницы отзывов">
