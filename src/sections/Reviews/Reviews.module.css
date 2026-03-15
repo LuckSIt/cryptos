@@ -99,6 +99,8 @@
   align-items: flex-start;
   text-align: left;
   min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cardHeader {
@@ -148,6 +150,9 @@
   line-height: 1.5;
   color: #000000;
   opacity: 1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
 }
 
 .pagination {
@@ -242,7 +247,12 @@
 
   .grid {
     grid-template-columns: repeat(12, minmax(240px, 280px));
-    gap: 16px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
   }
 
   .cardHeader {
@@ -280,9 +290,16 @@
   }
 }
 
-@media (max-width: 770px) {
-  .card {
-    width: min(280px, 90vw);
+/* 400–770px: убираем наложение колонок — уже колонки, зазор, карточка не вылезает */
+@media (max-width: 770px) and (min-width: 401px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(220px, 260px));
+    gap: 24px;
+  }
+
+  .cardText {
+    font-size: 11px;
+    line-height: 1.4;
   }
 }
 
@@ -291,7 +308,17 @@
     padding: 24px 12px 40px;
   }
 
+  .grid {
+    grid-template-columns: repeat(12, minmax(200px, 240px));
+    gap: 20px;
+  }
+
   .card {
-    width: min(260px, 100%);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cardText {
+    font-size: 11px;
   }
 }
