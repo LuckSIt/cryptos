@@ -186,7 +186,7 @@
 
 .headerLogoText {
   color: #ffffff;
-  font: bold 1rem/1.2 "Segoe UI", sans-serif;
+  font: bold 1rem/1.2 "Selawik", "Segoe UI", sans-serif;
   white-space: nowrap;
 }
 
@@ -210,7 +210,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 14px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;
@@ -312,7 +312,7 @@
 
 /* Навигация и мессенджеры на странице бизнеса: Segoe UI Regular 12px, opacity 0.7 */
 .pageHeaderBusiness .headerNav a {
-  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 12px/22px "Selawik", "Segoe UI", sans-serif;
   opacity: 0.7;
 }
 
@@ -321,7 +321,7 @@
 }
 
 .pageHeaderBusiness .headerMessengerLink {
-  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 12px/22px "Selawik", "Segoe UI", sans-serif;
   opacity: 0.7;
 }
 
@@ -340,7 +340,7 @@
   color: #ffffff;
   opacity: 0.7;
   text-align: left;
-  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 14px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-decoration: none;
   display: inline-flex;
@@ -387,7 +387,7 @@
   max-height: 19px;
   opacity: 1;
   color: #ffffff;
-  font: normal normal normal 14px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 14px/22px "Selawik", "Segoe UI", sans-serif;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -457,7 +457,7 @@
   border: none;
   background: transparent;
   color: #ffffff;
-  font: normal normal bold 12px/17px "Segoe UI", sans-serif;
+  font: normal normal bold 12px/17px "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -511,7 +511,7 @@
   border: none;
   background: #f5f5f5;
   color: #595959;
-  font: normal normal bold 12px/22px "Segoe UI", sans-serif;
+  font: normal normal bold 12px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-align: left;
   cursor: pointer;
@@ -565,7 +565,7 @@
   border: none;
   background: transparent;
   color: #ffffff;
-  font: normal normal normal 16px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 16px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-align: left;
   cursor: pointer;
@@ -611,7 +611,7 @@
 .headerNav a {
   color: #ffffff;
   text-align: center;
-  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 12px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-decoration: none;
   opacity: 1;
@@ -640,7 +640,7 @@
   gap: 1.46vw;
   color: #ffffff;
   text-align: left;
-  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 12px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
 }
 
@@ -678,7 +678,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font: normal normal normal 12px/22px "Segoe UI", sans-serif;
+  font: normal normal normal 12px/22px "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0;
   text-align: left;
   padding: 10px 18px;
@@ -751,7 +751,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: #1890FF;
   color: #ffffff;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
   border-radius: 0;
   white-space: nowrap;
@@ -896,7 +896,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: transparent;
   color: rgba(255, 255, 255, 0.9);
-  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
 }
 
@@ -916,7 +916,7 @@
 .headerDrawerNav a {
   color: #fff;
   text-decoration: none;
-  font: 400 15px/1.4 "Segoe UI", sans-serif;
+  font: 400 15px/1.4 "Selawik", "Segoe UI", sans-serif;
   padding: 12px 0;
 }
 
@@ -929,7 +929,7 @@
 .headerDrawerContact {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  font: 400 14px/1.4 "Segoe UI", sans-serif;
+  font: 400 14px/1.4 "Selawik", "Segoe UI", sans-serif;
 }
 
 .headerDrawerLang {
@@ -946,7 +946,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: transparent;
   color: #fff;
-  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
 }
 
@@ -960,7 +960,7 @@
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
-  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
   align-self: flex-start;
 }
@@ -973,7 +973,7 @@
 .headerDrawerMessenger {
   color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
-  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
 }
 
 .hero {
@@ -987,7 +987,7 @@
 
 .heroTitle {
   color: #ffffff;
-  font: normal normal bold 56px/1.2 "Segoe UI", sans-serif;
+  font: normal normal bold 56px/1.2 "Selawik", "Segoe UI", sans-serif;
   text-align: center;
   margin: 0;
   max-width: 758px;
@@ -995,7 +995,7 @@
 
 .heroSubtitle {
   color: #ffffff;
-  font: normal normal normal 18px/1.5 "Segoe UI", sans-serif;
+  font: normal normal normal 18px/1.5 "Selawik", "Segoe UI", sans-serif;
   text-align: center;
   margin: 23px 0 1.5rem;
   opacity: 0.95;
@@ -1016,7 +1016,7 @@
   color: #ffffff;
   border: none;
   border-radius: 999px;
-  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
   letter-spacing: 0.02em;
   cursor: pointer;
   text-decoration: none;

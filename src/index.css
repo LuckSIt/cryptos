@@ -1,6 +1,28 @@
 /* === Адаптация: этап 1 — основа, 2 — Header, 3 — IntroScreen hero, 4 — ExchangeWidget, 5 — Hero, 6 — News, 7 — Reviews, 8 — Footer. === */
 
-/* Segoe UI с CDN для всех устройств (в т.ч. iPhone), local() для Windows */
+/* Selawik — открытый аналог Segoe UI (Microsoft), стабильно грузится на всех устройствах */
+@font-face {
+  font-family: 'Selawik';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Selawik'), url('https://fonts.cdnfonts.com/s/18078/selawk.woff') format('woff');
+}
+@font-face {
+  font-family: 'Selawik';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Selawik Bold'), url('https://fonts.cdnfonts.com/s/18078/selawkb.woff') format('woff');
+}
+@font-face {
+  font-family: 'Selawik';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Selawik Semibold'), url('https://fonts.cdnfonts.com/s/18078/selawksb.woff') format('woff');
+}
+/* Segoe UI — для Windows (local), запасной вариант */
 @font-face {
   font-family: 'Segoe UI';
   font-style: normal;
@@ -10,24 +32,10 @@
 }
 @font-face {
   font-family: 'Segoe UI';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Segoe UI'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Italic.woff') format('woff');
-}
-@font-face {
-  font-family: 'Segoe UI';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: local('Segoe UI Bold'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Bold.woff') format('woff');
-}
-@font-face {
-  font-family: 'Segoe UI';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Segoe UI Bold Italic'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Bold%20Italic.woff') format('woff');
 }
 
 *,
@@ -47,7 +55,7 @@ body {
   min-height: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Selawik', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -63,7 +71,7 @@ main {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Selawik', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @media (max-width: 770px) {
