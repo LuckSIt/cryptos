@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 80px);
+  padding: clamp(32px, 5vh, 64px) clamp(24px, 5vw, 64px);
   background: #FFFFFF;
   box-sizing: border-box;
 }
@@ -10,8 +10,16 @@
   max-width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 380px);
+  grid-template-columns: repeat(3, 300px);
   gap: 6px;
+}
+
+/* На больших экранах карточки крупнее */
+@media (min-width: 1280px) {
+  .inner {
+    grid-template-columns: repeat(3, 380px);
+    gap: 8px;
+  }
 }
 
 .card {

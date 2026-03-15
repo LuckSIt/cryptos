@@ -1,38 +1,49 @@
+import { useState, useCallback } from 'react';
 import type { FC } from 'react';
 import styles from './Header.module.css';
 
 const LOGO_SVG = '/crypto/Компонент%2067%20%E2%80%93%201.svg';
 const LOGO_HOVER_SVG = '/crypto/' + encodeURIComponent('Компонент 67 – 1 (Состояние наведения).svg');
 
+const NAV_LINKS = [
+  { href: '#main', label: 'Главная' },
+  { href: '#exchange', label: 'Обмен' },
+  { href: '#about', label: 'О нас' },
+  { href: '#news', label: 'Новости' },
+  { href: '#reviews', label: 'Отзывы' },
+  { href: '#rules', label: 'Правила обмена' },
+  { href: '#rules', label: 'Политика AML/KYC' },
+  { href: '#contacts', label: 'Контакты' },
+] as const;
+
 type HeaderProps = {
   visible?: boolean;
   variant?: 'buyer' | 'business';
 };
 
-const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => (
+const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  return (
   <header
     className={`${styles.header} ${visible ? styles.headerVisible : ''} ${variant === 'business' ? styles.headerBusiness : ''}`}
     role="banner"
     aria-hidden={!visible}
   >
     <div className={styles.logo}>
-      <a href="#main" className={styles.logoLink} aria-label="Binary Flow">
+      <a href="#main" className={styles.logoLink} aria-label="Binary Flow" onClick={closeMenu}>
         <img src={LOGO_SVG} alt="" width="80" height="30" className={styles.logoImg} />
         <img src={LOGO_HOVER_SVG} alt="" width="80" height="30" className={styles.logoImgHover} />
       </a>
     </div>
     <nav className={styles.nav} aria-label="Основное меню">
-      <a href="#main" className={styles.navLink}>Главная</a>
-      <a href="#exchange" className={styles.navLink}>Обмен</a>
-      <a href="#about" className={styles.navLink}>О нас</a>
-      <a href="#news" className={styles.navLink}>Новости</a>
-      <a href="#reviews" className={styles.navLink}>Отзывы</a>
-      <a href="#rules" className={styles.navLink}>Правила обмена</a>
-      <a href="#rules" className={styles.navLink}>Политика AML/KYC</a>
-      <a href="#contacts" className={styles.navLink}>Контакты</a>
+      {NAV_LINKS.map(({ href, label }) => (
+        <a key={label} href={href} className={styles.navLink} onClick={closeMenu}>{label}</a>
+      ))}
     </nav>
     <div className={styles.messengers}>
-      <a href="#" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="WhatsApp">
+      <a href="https://wa.me/78002000600" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
         <span className={styles.navLinkIcon} aria-hidden>
           <svg viewBox="0 0 16 17" fill="currentColor">
             <path d="M12.466,9.49c-.218-.09-1.261-.54-1.455-.61s-.332-.09-.481.1-.55.6-.676.73-.241.14-.458,0a6.076,6.076,0,0,1-1.707-.92A5.414,5.414,0,0,1,6.542,7.5c-.126-.18,0-.28.092-.38s.206-.21.321-.32a1.36,1.36,0,0,0,.206-.31.337.337,0,0,0,0-.33c0-.09-.481-1-.665-1.37s-.344-.32-.47-.32H5.568a.881.881,0,0,0-.573.23A1.978,1.978,0,0,0,4.25,6.25,3.339,3.339,0,0,0,5.109,8.2,9.259,9.259,0,0,0,8.765,11c.5.19.894.3,1.2.39a3.307,3.307,0,0,0,1.341.07,2.232,2.232,0,0,0,1.444-.88,1.476,1.476,0,0,0,.126-.88A1.232,1.232,0,0,0,12.466,9.49Z" transform="translate(0 0.552)" />
@@ -41,7 +52,7 @@ const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => (
         </span>
         <span className={styles.navLinkText}>WhatsApp</span>
       </a>
-      <a href="https://t.me/" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+      <a href="https://t.me/flarex_pro" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
         <span className={styles.navLinkIcon} aria-hidden>
           <svg viewBox="2136 -4 24 24" fill="currentColor">
             <path transform="translate(2138 -4)" d="M17.636,7.118s1.48-.577,1.357.824c-.041.577-.411,2.6-.7,4.782L17.307,19.2s-.082.948-.822,1.113a3.276,3.276,0,0,1-2.056-.742c-.164-.124-3.084-1.979-4.111-2.886a.782.782,0,0,1,.041-1.319l4.317-4.122c.493-.495.987-1.649-1.069-.247L7.851,14.909a2.41,2.41,0,0,1-1.891.041l-2.672-.824s-.987-.618.7-1.237C8.1,10.952,13.154,8.973,17.636,7.118Z" />
@@ -50,7 +61,37 @@ const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => (
         <span className={styles.navLinkText}>Telegram</span>
       </a>
     </div>
+
+    <button
+      type="button"
+      className={styles.burger}
+      onClick={() => setMenuOpen((v) => !v)}
+      aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+      aria-expanded={menuOpen}
+    >
+      <span className={styles.burgerLine} />
+      <span className={styles.burgerLine} />
+      <span className={styles.burgerLine} />
+    </button>
+
+    <div className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`} aria-hidden={!menuOpen}>
+      <nav className={styles.drawerNav} aria-label="Меню">
+        {NAV_LINKS.map(({ href, label }) => (
+          <a key={label} href={href} className={styles.drawerLink} onClick={closeMenu}>{label}</a>
+        ))}
+      </nav>
+      <div className={styles.drawerMessengers}>
+        <a href="https://wa.me/78002000600" className={styles.drawerLink} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+          WhatsApp
+        </a>
+        <a href="https://t.me/flarex_pro" className={styles.drawerLink} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+          Telegram
+        </a>
+      </div>
+    </div>
+    {menuOpen && <div className={styles.drawerBackdrop} onClick={closeMenu} aria-hidden />}
   </header>
-);
+  );
+};
 
 export default Header;

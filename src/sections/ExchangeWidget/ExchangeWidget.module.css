@@ -49,18 +49,243 @@
   align-items: start;
 }
 
+/* === Этап 4: адаптация виджета обмена === */
+@media (max-width: 1024px) {
+  .section {
+    padding: clamp(12px, 2vh, 24px) clamp(12px, 3vw, 24px);
+  }
+
+  .sectionInner {
+    width: min(92vw, 1088px);
+  }
+
+  .container {
+    min-height: min(70vh, 520px);
+    padding: clamp(16px, 2vw, 24px) clamp(18px, 2.5vw, 28px);
+    border-radius: 24px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
+  .columnTitle {
+    font-size: 20px;
+    margin-bottom: 36px;
+  }
+
+  .tabs {
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  .tab {
+    height: 20px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .selectField {
+    height: 48px;
+    padding: 0 12px 0 10px;
+  }
+
+  .selectTriggerText {
+    font-size: 14px;
+  }
+
+  .inputField {
+    height: 48px;
+    padding: 0 12px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+
+  .swapWrap {
+    padding-top: 100px;
+  }
+
+  .swapBtn,
+  .swapIconWrap {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .ctaWrap {
+    margin-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .cta {
+    height: 48px;
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .instructionBlock {
+    padding: 10px 16px;
+  }
+
+  .instructionLink {
+    font-size: 13px;
+  }
+
+  .instructionExpanded {
+    padding: 0 16px 16px;
+  }
+
+  .instructionList {
+    font-size: 13px;
+    padding-left: 16px;
+  }
+
+  .instructionStep {
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 768px) {
+  .section {
+    padding: 12px 16px;
+  }
+
+  .sectionInner {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .container {
+    min-height: min(75vh, 560px);
+    padding: 16px 16px 20px;
+    border-radius: 20px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .swapWrap {
     order: -1;
     justify-self: center;
     transform: rotate(90deg);
+    padding-top: 0;
+    padding-bottom: 8px;
   }
 
+  .swapBtn,
+  .swapIconWrap {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  .columnTitle {
+    font-size: 18px;
+    margin-bottom: 24px;
+    width: auto;
+  }
+
+  .tabs {
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .tab {
+    height: 18px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+
+  .selectWrap {
+    margin-bottom: 10px;
+  }
+
+  .selectField {
+    height: 44px;
+    padding: 0 12px 0 10px;
+  }
+
+  .selectTriggerText {
+    font-size: 13px;
+  }
+
+  .selectOption {
+    height: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .selectOptionSelected {
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .inputWrap {
+    margin-bottom: 10px;
+  }
+
+  .inputField {
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  .input {
+    font-size: 13px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+
+  .error {
+    font-size: 11px;
+  }
+
+  .ctaWrap {
+    margin-top: 16px;
+    padding-bottom: 12px;
+  }
+
+  .cta {
+    height: 44px;
+    font-size: 13px;
+    padding: 0 16px;
+  }
+
+  .instructionBlock {
+    padding: 10px 14px;
+    border-radius: 999px;
+  }
+
+  .instructionLink {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .instructionChevron {
+    width: 14px;
+    height: 14px;
+  }
+
+  .instructionExpanded {
+    padding: 0 14px 14px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .instructionList {
+    font-size: 12px;
+    padding-left: 14px;
+  }
+
+  .instructionStep {
+    margin-bottom: 8px;
+  }
 }
 
 .columnTitle {

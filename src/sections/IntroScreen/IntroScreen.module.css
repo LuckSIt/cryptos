@@ -642,7 +642,6 @@
   text-align: left;
   font: normal normal normal 12px/22px "Segoe UI", sans-serif;
   letter-spacing: 0;
-  z-index: 1;
 }
 
 .headerMessengers a,
@@ -855,6 +854,128 @@
   height: 20px;
 }
 
+/* === Этап 3: адаптация героя (заголовок, подзаголовок, CTA, scroll hint) === */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 1rem 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 42px;
+    max-width: 90%;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+    margin: 18px 0 1.25rem;
+    max-width: 90%;
+  }
+
+  .heroCta {
+    width: 360px;
+    max-width: 90%;
+    height: 48px;
+    margin-top: 36px;
+    padding: 0 24px;
+    font-size: 14px;
+  }
+
+  .heroCta:hover {
+    width: 380px;
+    max-width: 92%;
+  }
+
+  .heroBusiness .heroTitle {
+    max-width: 95%;
+  }
+
+  .heroBusiness .heroSubtitle {
+    max-width: 95%;
+  }
+
+  .heroBusiness .heroCta {
+    width: 420px;
+    min-width: 0;
+    max-width: 92%;
+  }
+
+  .heroBusiness .heroCta:hover {
+    width: 440px;
+    min-width: 0;
+    max-width: 94%;
+  }
+
+  .scrollHint {
+    padding: 0.75rem 1rem 2rem;
+  }
+
+  .scrollHintIcon svg {
+    width: 12px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem 16px;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+    line-height: 1.25;
+    max-width: 100%;
+  }
+
+  .heroSubtitle {
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 14px 0 1rem;
+    max-width: 100%;
+  }
+
+  .heroCta {
+    width: 100%;
+    max-width: 320px;
+    height: 44px;
+    margin-top: 28px;
+    padding: 0 20px;
+    font-size: 13px;
+  }
+
+  .heroCta:hover {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .heroBusiness .heroCta {
+    width: 100%;
+    max-width: 340px;
+    min-width: 0;
+  }
+
+  .heroBusiness .heroCta:hover {
+    width: 100%;
+    max-width: 340px;
+    min-width: 0;
+  }
+
+  .scrollHint {
+    padding: 0.5rem 1rem 1.5rem;
+  }
+
+  .scrollHintIcon svg {
+    width: 12px;
+    height: 16px;
+  }
+}
+
+/* На средних ширинах чуть сдвигаем почту вправо, чтобы не наезжала на телефон (остальное не трогаем) */
+@media (max-width: 1320px) {
+  .headerEmail {
+    left: 68vw;
+  }
+}
+
 @media (max-width: 1400px) {
   .headerPhone {
     font-size: 12px;
@@ -881,7 +1002,126 @@
   .headerLogin {
     font-size: 14px;
   }
+}
 
+/* Около 1065px и меньше — уплотняем только верхнюю строку (контакты, язык, Войти), навигацию не трогаем */
+@media (max-width: 1100px) {
+  .headerPhone {
+    font-size: 11px;
+    left: 52vw;
+    gap: 4px;
+  }
+
+  .headerPhoneIcon svg,
+  .headerEmailIcon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .headerEmail {
+    font-size: 11px;
+    left: 61vw;
+    gap: 4px;
+  }
+
+  .headerLangWrap {
+    left: 71vw;
+  }
+
+  .headerLang {
+    font-size: 11px;
+  }
+
+  .headerLoginWrap {
+    right: 11vw;
+  }
+
+  .headerLogin {
+    font-size: 14px;
+    padding: 5px 10px;
+    gap: 4px;
+  }
+
+  .headerLoginIcon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Табы правее логотипа, чтобы не наезжать (лого 10.18vw + ~80px ≈ 18vw при 1028px) */
+  .headerTabs {
+    left: 19vw;
+  }
+
+  .headerTab {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Около 806px: убираем наложение лого/табов, контактов и нав/мессенджеров */
+@media (max-width: 900px) {
+  .headerLogoImg,
+  .headerLogoImgHover {
+    width: 64px;
+    height: 24px;
+  }
+
+  .headerTabs {
+    left: 22vw;
+  }
+
+  .headerTab {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .headerPhone {
+    font-size: 10px;
+    left: 46vw;
+  }
+
+  .headerEmail {
+    font-size: 10px;
+    left: 57vw;
+  }
+
+  .headerLangWrap {
+    left: 67vw;
+  }
+
+  .headerLoginWrap {
+    right: 12vw;
+  }
+
+  .headerLogin {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+
+  .headerNav {
+    right: 26vw;
+    flex-wrap: nowrap;
+    gap: 2px 6px;
+  }
+
+  .headerNav a {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .headerMessengers {
+    right: 6vw;
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .headerMessengerLink {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1400px) {
   .headerNav {
     right: 24vw;
     gap: 0.5% 1.2vw;
@@ -973,6 +1213,96 @@
   }
 }
 
+/* 1070px и около: нав в одну строку, мессенджеры не обрезаются справа */
+@media (max-width: 1080px) {
+  .headerNav {
+    right: 20vw;
+    gap: 2px 8px;
+    flex-wrap: nowrap;
+  }
+
+  .headerNav a {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .headerMessengers {
+    right: 6vw;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .headerMessengerLink {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+/* 806–900px: жёстко убираем все наложения (Контакты на WhatsApp, обрез слева/почты) */
+@media (max-width: 850px) {
+  .headerLogo {
+    left: 4vw;
+  }
+
+  .headerLogoImg,
+  .headerLogoImgHover {
+    width: 60px;
+    height: 22px;
+  }
+
+  .headerTabs {
+    left: 22vw;
+  }
+
+  .headerTab {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .headerPhone {
+    font-size: 10px;
+    left: 38vw;
+    gap: 3px;
+  }
+
+  .headerEmail {
+    font-size: 10px;
+    left: 58vw;
+    gap: 3px;
+  }
+
+  .headerLangWrap {
+    left: 68vw;
+  }
+
+  .headerLoginWrap {
+    right: 10vw;
+  }
+
+  .headerNav {
+    left: 4vw;
+    right: 30vw;
+    gap: 2px 5px;
+    flex-wrap: nowrap;
+  }
+
+  .headerNav a {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+
+  .headerMessengers {
+    right: 4vw;
+    font-size: 9px;
+    gap: 5px;
+  }
+
+  .headerMessengerLink {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+}
+
 @media (max-width: 768px) {
   .screen {
     padding-top: 28vh;
@@ -988,17 +1318,139 @@
     height: clamp(60px, 10.47vw, 71.5px);
   }
 
+  /* Лого и табы: лого мельче, табы правее — без наложения */
+  .headerLogo {
+    left: 3vw;
+  }
+
+  .headerLogoImg,
+  .headerLogoImgHover {
+    width: 52px;
+    height: 19px;
+  }
+
+  .headerTabs {
+    left: 20vw;
+  }
+
+  .headerTab {
+    padding: 3px 6px;
+    font-size: 10px;
+    min-height: 18px;
+  }
+
+  .headerTab:first-of-type,
+  .headerTab:last-of-type {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Верхняя строка: телефон, почта, RU, Войти — с зазорами */
+  .headerPhone {
+    font-size: 9px;
+    left: 38vw;
+    gap: 3px;
+  }
+
+  .headerPhoneIcon svg,
+  .headerEmailIcon svg {
+    width: 9px;
+    height: 9px;
+  }
+
+  .headerEmail {
+    font-size: 9px;
+    left: 48vw;
+    gap: 3px;
+  }
+
+  .headerLangWrap {
+    left: 58vw;
+  }
+
+  .headerLang {
+    font-size: 9px;
+  }
+
+  .headerLoginWrap {
+    right: 3vw;
+  }
+
+  .headerLogin {
+    font-size: 11px;
+    padding: 3px 6px;
+    gap: 3px;
+  }
+
+  .headerLoginIcon svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Нав и мессенджеры строго разделены: нав не заходит в зону справа */
   .headerNav {
-    right: 18vw;
-    gap: 4px 8px;
+    left: 3vw;
+    right: 30vw;
+    gap: 1px 3px;
+    flex-wrap: nowrap;
   }
 
   .headerNav a {
-    font-size: 10px;
+    font-size: 8px;
+    padding: 3px 4px;
   }
 
   .headerMessengers {
-    font-size: 10px;
-    gap: 8px;
+    right: 3vw;
+    font-size: 8px;
+    gap: 3px;
+  }
+
+  .headerMessengerLink {
+    padding: 3px 4px;
+    font-size: 8px;
+  }
+}
+
+/* Ещё уже (760px и меньше): ещё плотнее, без наложений */
+@media (max-width: 760px) {
+  .headerLogoImg,
+  .headerLogoImgHover {
+    width: 46px;
+    height: 17px;
+  }
+
+  .headerTabs {
+    left: 18vw;
+  }
+
+  .headerPhone {
+    left: 35vw;
+  }
+
+  .headerEmail {
+    left: 45vw;
+  }
+
+  .headerLangWrap {
+    left: 55vw;
+  }
+
+  .headerNav {
+    right: 32vw;
+  }
+
+  .headerNav a {
+    font-size: 7px;
+    padding: 2px 3px;
+  }
+
+  .headerMessengers {
+    font-size: 7px;
+  }
+
+  .headerMessengerLink {
+    padding: 2px 3px;
+    font-size: 7px;
   }
 }

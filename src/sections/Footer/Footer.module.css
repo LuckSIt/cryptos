@@ -243,8 +243,161 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* === Этап 8: адаптация Footer === */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 0 clamp(16px, 3vw, 32px) clamp(16px, 3vw, 32px);
+  }
+
+  .partnersBar {
+    padding: 20px 0;
+  }
+
+  .partnersBarTrack {
+    gap: clamp(24px, 4vw, 48px);
+    padding: 0 clamp(20px, 4vw, 48px);
+  }
+
+  .partnerLogoWrap {
+    height: 28px;
+  }
+
+  .scrollTopBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .scrollTopBtn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mainBlock {
+    padding: clamp(36px, 5vw, 56px) clamp(20px, 4vw, 48px) clamp(24px, 3vw, 36px);
+    margin: 12px auto 20px;
+    border-radius: 20px;
+  }
+
+  .brand {
+    margin-bottom: clamp(24px, 3vw, 36px);
+  }
+
+  .brandLogoLink img {
+    height: clamp(26px, 2.8vw, 32px);
+  }
+
+  .columns {
+    gap: clamp(24px, 4vw, 48px);
+    margin-bottom: clamp(32px, 4vw, 44px);
+  }
+
+  .columnTitle {
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .columnText {
+    font-size: 13px;
+  }
+
+  .columnText strong {
+    font-size: 16px;
+  }
+
+  .links a {
+    font-size: 13px;
+  }
+
+  .copyright {
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 768px) {
+  .footer {
+    padding: 0 16px 24px;
+  }
+
+  .partnersBar {
+    padding: 16px 0;
+  }
+
+  .partnersBarTrack {
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .partnerLogoWrap {
+    height: 24px;
+  }
+
+  .scrollTopWrap {
+    margin-top: -16px;
+  }
+
+  .scrollTopBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .scrollTopBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mainBlock {
+    padding: 28px 16px 24px;
+    margin: 10px auto 16px;
+    border-radius: 16px;
+  }
+
+  .brand {
+    margin-bottom: 20px;
+  }
+
+  .brandLogoLink img {
+    height: 26px;
+  }
+
   .columns {
     grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+    align-items: stretch;
+  }
+
+  .linksWrap {
+    text-align: left;
+  }
+
+  .links {
+    align-items: flex-start;
+  }
+
+  .columnTitle {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .columnText {
+    font-size: 12px;
+  }
+
+  .columnTextBreak {
+    margin-top: 14px;
+  }
+
+  .columnText strong {
+    font-size: 15px;
+  }
+
+  .links a {
+    font-size: 12px;
+  }
+
+  .copyright {
+    font-size: 11px;
   }
 }

@@ -157,6 +157,8 @@
     left: 8px;
     width: 5px;
     transform: none;
+    top: 0;
+    bottom: -100px;
   }
 
   .timelineLine {

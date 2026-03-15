@@ -139,14 +139,204 @@
   100% { border-radius: 22px; }
 }
 
-@media (max-width: 1024px) {
+/* Бургер: скрыт на десктопе, аккуратно встроен в шапку */
+.burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: 4px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+.burger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.burger:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+.burgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.burger[aria-expanded="true"] .burgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.burger[aria-expanded="true"] .burgerLine:nth-child(2) {
+  opacity: 0;
+}
+.burger[aria-expanded="true"] .burgerLine:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Drawer: выезжающее меню для планшетов и телефонов */
+.drawer {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1890FF;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 99;
+}
+.header.headerBusiness .drawer {
+  background: rgba(0, 0, 0, 0.97);
+}
+.drawerOpen {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.drawerLink {
+  display: block;
+  padding: 14px 16px;
+  color: #ffffff;
+  font: 400 16px/1.25 "Segoe UI", sans-serif;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+.drawerLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.drawerMessengers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  top: 56px;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 98;
+}
+
+/* До 1520px — первый компактный режим: меньше отступы и ссылки */
+@media (max-width: 1520px) {
+  .header {
+    padding: 0 5vw;
+    gap: 12px;
+  }
+
+  .logoImg,
+  .logoImgHover {
+    width: 72px;
+    height: 27px;
+  }
+
   .nav {
-    gap: 6px;
+    gap: 4px 10px;
+    flex-wrap: nowrap;
   }
 
   .navLink {
     font-size: 11px;
-    padding: 8px 14px;
+    padding: 8px 12px;
+  }
+
+  .messengers {
+    gap: 12px;
+  }
+
+  .navLinkMessenger .navLinkIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .navLinkMessenger .navLinkIcon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* До 1280px — ещё компактнее */
+@media (max-width: 1280px) {
+  .header {
+    padding: 0 3.5vw;
+    gap: 8px;
+  }
+
+  .logoImg,
+  .logoImgHover {
+    width: 64px;
+    height: 24px;
+  }
+
+  .nav {
+    gap: 2px 6px;
+    flex-wrap: nowrap;
+  }
+
+  .navLink {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .messengers {
+    gap: 8px;
+  }
+
+  .navLinkMessenger .navLinkIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navLinkMessenger .navLinkIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Когда места не хватает — показываем бургер */
+@media (max-width: 992px) {
+  .nav,
+  .messengers {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+
+  .header {
+    padding: 0 4vw;
+  }
+
+  .logoImg,
+  .logoImgHover {
+    width: 80px;
+    height: 30px;
   }
 }
 
@@ -155,6 +345,13 @@
     height: 52px;
     padding: 0 clamp(12px, 4vw, 16px);
     gap: 8px;
+  }
+
+  .drawer {
+    top: 52px;
+  }
+  .drawerBackdrop {
+    top: 52px;
   }
 
   .navLink {

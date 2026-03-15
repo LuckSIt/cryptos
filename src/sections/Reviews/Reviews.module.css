@@ -179,6 +179,107 @@
   background: rgba(0, 0, 0, 0.35);
 }
 
+/* === Этап 7: адаптация секции Reviews === */
+@media (max-width: 1024px) {
+  .section {
+    padding: clamp(32px, 5vh, 56px) clamp(20px, 4vw, 48px);
+  }
+
+  .title {
+    font-size: clamp(24px, 3.5vw, 32px);
+    margin-bottom: clamp(24px, 3vh, 36px);
+  }
+
+  .grid {
+    grid-template-columns: repeat(12, minmax(260px, 300px));
+    gap: 20px;
+  }
+
+  .cardHeader {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .cardName,
+  .cardDate {
+    font-size: 11px;
+  }
+
+  .cardText {
+    font-size: 13px;
+  }
+
+  .pagination {
+    padding-top: clamp(32px, 4vw, 44px);
+    gap: 6px;
+  }
+
+  .dot {
+    width: 20px;
+    height: 4px;
+  }
+
+  .dotActive {
+    width: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 24px 16px 40px;
+    min-height: auto;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(12, minmax(240px, 280px));
+    gap: 16px;
+  }
+
+  .cardHeader {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cardName,
+  .cardDate {
+    font-size: 11px;
+  }
+
+  .cardText {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .pagination {
+    padding-top: 24px;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 18px;
+    height: 3px;
+  }
+
+  .dotActive {
+    width: 22px;
+  }
+}
+
 @media (max-width: 500px) {
   .card {
     width: min(280px, 90vw);
