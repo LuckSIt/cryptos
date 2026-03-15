@@ -30,11 +30,21 @@ main {
   background: #243c67;
   min-height: 100vh;
   padding-top: 56px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   main {
     padding-top: 52px;
+  }
+}
+
+/* 320px и узкие экраны */
+@media (max-width: 400px) {
+  main {
+    padding-top: 48px;
   }
 }
 

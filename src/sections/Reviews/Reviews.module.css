@@ -229,7 +229,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .section {
     padding: 24px 16px 40px;
     min-height: auto;
@@ -280,8 +280,18 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 770px) {
   .card {
     width: min(280px, 90vw);
+  }
+}
+
+@media (max-width: 400px) {
+  .section {
+    padding: 24px 12px 40px;
+  }
+
+  .card {
+    width: min(260px, 100%);
   }
 }

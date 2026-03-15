@@ -158,7 +158,7 @@
     width: 5px;
     transform: none;
     top: 0;
-    bottom: -100px;
+    bottom: -180px;
   }
 
   .timelineLine {
@@ -212,5 +212,33 @@
   .stepDescription {
     text-align: left;
     padding-left: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .section {
+    padding: 24px 12px 40px;
+  }
+
+  .lineRowWrapper {
+    width: 24px;
+  }
+
+  .lineRow {
+    left: 6px;
+    width: 4px;
+  }
+
+  .stepCard {
+    padding-left: 32px;
+    margin-bottom: 12px;
+  }
+
+  .markerCell {
+    margin-left: -32px;
+  }
+
+  .stepMarker {
+    left: 8px;
   }
 }

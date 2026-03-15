@@ -147,6 +147,16 @@
 @media (max-width: 600px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .section {
+    padding: 24px 12px 40px;
+  }
+
+  .inner {
+    gap: 152px;
   }
 }

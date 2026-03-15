@@ -332,7 +332,7 @@
 .headerPhone {
   position: absolute;
   top: 27.97%;
-  left: 57.76vw;
+  left: 55vw;
   min-width: 7.1vw;
   max-width: 97px;
   height: 13.29%;
@@ -380,7 +380,7 @@
 .headerEmail {
   position: absolute;
   top: 27.97%;
-  left: 66.62vw;
+  left: 69vw;
   min-width: 9.96vw;
   max-width: 136px;
   height: 13.29%;
@@ -436,7 +436,7 @@
 .headerLangWrap {
   position: absolute;
   top: 27.97%;
-  left: 78.33vw;
+  left: 83.5vw;
   width: 3vw;
   min-width: 32px;
   max-width: 41px;
@@ -547,7 +547,7 @@
   position: absolute;
   top: 0;
   bottom: 44.06%;
-  right: 10.18vw;
+  right: 7vw;
   width: max-content;
   min-width: unset;
   height: auto;
@@ -596,7 +596,7 @@
   position: absolute;
   top: 61.54%;
   left: 10.18vw;
-  right: 22vw;
+  right: 32vw;
   width: auto;
   height: clamp(24px, 4.17vh, 32px);
   max-height: 32px;
@@ -633,7 +633,7 @@
 .headerMessengers {
   position: absolute;
   top: 66.5%;
-  right: 10.18vw;
+  right: 7vw;
   height: clamp(24px, 4.17vh, 32px);
   display: flex;
   align-items: center;
@@ -735,6 +735,245 @@
   width: 24px;
   height: 24px;
   fill: #1890FF;
+}
+
+/* Мобильный переключатель Покупателю/Бизнесу — показывается только на узких экранах */
+.headerTabsMobile {
+  display: none;
+}
+
+.headerTabMobile {
+  box-sizing: border-box;
+  padding: 3px 6px;
+  font-size: 9px;
+  line-height: 1.25;
+  min-height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #1890FF;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+  cursor: pointer;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.headerTabMobile:first-of-type {
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+}
+
+.headerTabMobile:last-of-type {
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+}
+
+.headerTabMobileActive {
+  background: #ffffff;
+  color: #1890FF;
+  border-color: #ffffff;
+  font-weight: 600;
+}
+
+.pageHeaderBusiness .headerTabMobile:not(.headerTabMobileActive) {
+  background: #000000;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.pageHeaderBusiness .headerTabMobileActive {
+  background: #1890FF;
+  color: #ffffff;
+  border-color: #1890FF;
+}
+
+/* Мобильный бургер и drawer (показываются только в @media 400px) */
+.headerBurgerWrap {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.headerBurger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.headerBurger:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.headerBurgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.headerBurger[aria-expanded="true"] .headerBurgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.headerBurger[aria-expanded="true"] .headerBurgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.headerBurger[aria-expanded="true"] .headerBurgerLine:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.headerDrawerBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.headerDrawerBackdropVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.headerDrawer {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1890FF;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 99;
+}
+
+.pageHeaderBusiness ~ .headerDrawer {
+  background: rgba(0, 0, 0, 0.97);
+}
+
+.headerDrawerOpen {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.headerDrawerTabs {
+  display: flex;
+  gap: 8px;
+}
+
+.headerDrawerTab {
+  padding: 10px 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.headerDrawerTabActive {
+  background: #fff;
+  color: #1890FF;
+  border-color: #fff;
+  font-weight: 600;
+}
+
+.headerDrawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.headerDrawerNav a {
+  color: #fff;
+  text-decoration: none;
+  font: 400 15px/1.4 "Segoe UI", sans-serif;
+  padding: 12px 0;
+}
+
+.headerDrawerContacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerDrawerContact {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font: 400 14px/1.4 "Segoe UI", sans-serif;
+}
+
+.headerDrawerLang {
+  display: flex;
+  gap: 8px;
+}
+
+.headerDrawerLangBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.headerDrawerLangFlag {
+  display: inline-flex;
+}
+
+.headerDrawerLogin {
+  padding: 12px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font: 400 14px/1.25 "Segoe UI", sans-serif;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.headerDrawerMessengers {
+  display: flex;
+  gap: 12px;
+}
+
+.headerDrawerMessenger {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font: 400 14px/1.25 "Segoe UI", sans-serif;
 }
 
 .hero {
@@ -915,7 +1154,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .hero {
     padding: 1rem 16px;
   }
@@ -969,10 +1208,14 @@
   }
 }
 
-/* На средних ширинах чуть сдвигаем почту вправо, чтобы не наезжала на телефон (остальное не трогаем) */
+/* На средних ширинах сдвигаем почту и язык вправо — отступы от телефона и между собой */
 @media (max-width: 1320px) {
   .headerEmail {
-    left: 68vw;
+    left: 70vw;
+  }
+
+  .headerLangWrap {
+    left: 82vw;
   }
 }
 
@@ -980,23 +1223,23 @@
   .headerPhone {
     font-size: 12px;
     gap: 4px;
-    left: 56vw;
+    left: 54vw;
     min-width: auto;
   }
 
   .headerEmail {
     font-size: 12px;
     gap: 4px;
-    left: 65.5vw;
+    left: 67vw;
     min-width: auto;
   }
 
   .headerLangWrap {
-    left: 77.5vw;
+    left: 81vw;
   }
 
   .headerLoginWrap {
-    right: 9vw;
+    right: 6vw;
   }
 
   .headerLogin {
@@ -1004,11 +1247,11 @@
   }
 }
 
-/* Около 1065px и меньше — уплотняем только верхнюю строку (контакты, язык, Войти), навигацию не трогаем */
+/* Около 1065px и меньше — уплотняем верхнюю строку, увеличиваем отступы между контактами и языком */
 @media (max-width: 1100px) {
   .headerPhone {
     font-size: 11px;
-    left: 52vw;
+    left: 50vw;
     gap: 4px;
   }
 
@@ -1020,12 +1263,16 @@
 
   .headerEmail {
     font-size: 11px;
-    left: 61vw;
+    left: 63vw;
     gap: 4px;
   }
 
   .headerLangWrap {
-    left: 71vw;
+    left: 74vw;
+  }
+
+  .headerNav {
+    right: 32vw;
   }
 
   .headerLang {
@@ -1033,7 +1280,7 @@
   }
 
   .headerLoginWrap {
-    right: 11vw;
+    right: 8vw;
   }
 
   .headerLogin {
@@ -1077,20 +1324,20 @@
 
   .headerPhone {
     font-size: 10px;
-    left: 46vw;
+    left: 44vw;
   }
 
   .headerEmail {
     font-size: 10px;
-    left: 57vw;
+    left: 58vw;
   }
 
   .headerLangWrap {
-    left: 67vw;
+    left: 71.5vw;
   }
 
   .headerLoginWrap {
-    right: 12vw;
+    right: 9vw;
   }
 
   .headerLogin {
@@ -1099,7 +1346,7 @@
   }
 
   .headerNav {
-    right: 26vw;
+    right: 35vw;
     flex-wrap: nowrap;
     gap: 2px 6px;
   }
@@ -1110,7 +1357,7 @@
   }
 
   .headerMessengers {
-    right: 6vw;
+    right: 3.5vw;
     font-size: 10px;
     gap: 6px;
   }
@@ -1118,6 +1365,14 @@
   .headerMessengerLink {
     padding: 5px 8px;
     font-size: 10px;
+  }
+}
+
+/* 861–960px: уменьшенный шрифт навигации, чтобы не было наложения на мессенджеры */
+@media (min-width: 861px) and (max-width: 960px) {
+  .headerNav a {
+    font-size: 9px;
+    padding: 4px 6px;
   }
 }
 
@@ -1164,7 +1419,7 @@
 
   .headerNav {
     gap: 0.6% 1.4vw;
-    right: 26vw;
+    right: 30vw;
   }
 }
 
@@ -1181,25 +1436,25 @@
 
   .headerNav {
     gap: 0.5% 1.2vw;
-    right: 28vw;
+    right: 34vw;
   }
 
   .headerPhone {
     font-size: 11px;
-    left: 55vw;
+    left: 52vw;
   }
 
   .headerEmail {
     font-size: 11px;
-    left: 64.5vw;
+    left: 66vw;
   }
 
   .headerLangWrap {
-    left: 76.5vw;
+    left: 80vw;
   }
 
   .headerLoginWrap {
-    right: 8vw;
+    right: 5vw;
   }
 
   .headerLogin {
@@ -1213,10 +1468,10 @@
   }
 }
 
-/* 1070px и около: нав в одну строку, мессенджеры не обрезаются справа */
+/* 1070px и около: нав в одну строку, отступ от мессенджеров */
 @media (max-width: 1080px) {
   .headerNav {
-    right: 20vw;
+    right: 33vw;
     gap: 2px 8px;
     flex-wrap: nowrap;
   }
@@ -1227,7 +1482,7 @@
   }
 
   .headerMessengers {
-    right: 6vw;
+    right: 4vw;
     gap: 6px;
     font-size: 10px;
   }
@@ -1238,7 +1493,7 @@
   }
 }
 
-/* 806–900px: жёстко убираем все наложения (Контакты на WhatsApp, обрез слева/почты) */
+/* 806–900px: жёстко убираем все наложения (Контакты на WhatsApp, обрез слева/почты), увеличены отступы */
 @media (max-width: 850px) {
   .headerLogo {
     left: 4vw;
@@ -1261,27 +1516,27 @@
 
   .headerPhone {
     font-size: 10px;
-    left: 38vw;
+    left: 36vw;
     gap: 3px;
   }
 
   .headerEmail {
     font-size: 10px;
-    left: 58vw;
+    left: 59vw;
     gap: 3px;
   }
 
   .headerLangWrap {
-    left: 68vw;
+    left: 72.5vw;
   }
 
   .headerLoginWrap {
-    right: 10vw;
+    right: 7vw;
   }
 
   .headerNav {
     left: 4vw;
-    right: 30vw;
+    right: 38vw;
     gap: 2px 5px;
     flex-wrap: nowrap;
   }
@@ -1292,7 +1547,7 @@
   }
 
   .headerMessengers {
-    right: 4vw;
+    right: 2.5vw;
     font-size: 9px;
     gap: 5px;
   }
@@ -1303,15 +1558,15 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .screen {
     padding-top: 28vh;
   }
 
   .logo {
-    top: 28vh;
+    top: 50%;
     left: 50%;
-    margin-left: -100px;
+    margin-left: 0;
   }
 
   .pageHeader {
@@ -1348,7 +1603,7 @@
   /* Верхняя строка: телефон, почта, RU, Войти — с зазорами */
   .headerPhone {
     font-size: 9px;
-    left: 38vw;
+    left: 34vw;
     gap: 3px;
   }
 
@@ -1360,12 +1615,12 @@
 
   .headerEmail {
     font-size: 9px;
-    left: 48vw;
+    left: 50vw;
     gap: 3px;
   }
 
   .headerLangWrap {
-    left: 58vw;
+    left: 63.5vw;
   }
 
   .headerLang {
@@ -1373,7 +1628,7 @@
   }
 
   .headerLoginWrap {
-    right: 3vw;
+    right: 2vw;
   }
 
   .headerLogin {
@@ -1390,7 +1645,7 @@
   /* Нав и мессенджеры строго разделены: нав не заходит в зону справа */
   .headerNav {
     left: 3vw;
-    right: 30vw;
+    right: 38vw;
     gap: 1px 3px;
     flex-wrap: nowrap;
   }
@@ -1401,7 +1656,7 @@
   }
 
   .headerMessengers {
-    right: 3vw;
+    right: 2vw;
     font-size: 8px;
     gap: 3px;
   }
@@ -1412,7 +1667,7 @@
   }
 }
 
-/* Ещё уже (760px и меньше): ещё плотнее, без наложений */
+/* Ещё уже (760px и меньше): ещё плотнее, увеличены отступы между контактами и нав/мессенджеры */
 @media (max-width: 760px) {
   .headerLogoImg,
   .headerLogoImgHover {
@@ -1425,19 +1680,19 @@
   }
 
   .headerPhone {
-    left: 35vw;
+    left: 30vw;
   }
 
   .headerEmail {
-    left: 45vw;
+    left: 46vw;
   }
 
   .headerLangWrap {
-    left: 55vw;
+    left: 59.5vw;
   }
 
   .headerNav {
-    right: 32vw;
+    right: 40vw;
   }
 
   .headerNav a {
@@ -1452,5 +1707,214 @@
   .headerMessengerLink {
     padding: 2px 3px;
     font-size: 7px;
+  }
+}
+
+/* До 860px: компактный хедер (без нав-строки и контактов в шапке), чтобы не было наложений при ~854px */
+@media (max-width: 860px) {
+  .screen {
+    padding-top: 24vh;
+  }
+
+  .pageHeader {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    overflow: visible;
+  }
+
+  .pageHeader::before {
+    height: 100%;
+  }
+
+  .headerTop {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    overflow: visible;
+    min-width: 0;
+    order: 1;
+  }
+
+  .headerLogoImg,
+  .headerLogoImgHover {
+    width: 52px;
+    height: 20px;
+  }
+
+  .headerLogo {
+    position: static;
+    transform: none;
+  }
+
+  .headerTabs {
+    display: none !important;
+  }
+
+  .headerTabsMobile {
+    display: flex !important;
+    flex-shrink: 0;
+    gap: 0;
+    order: 2;
+    align-self: center;
+    margin: 0 8px;
+    min-width: 140px;
+  }
+
+  .headerTabMobile {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  .headerNav {
+    display: none !important;
+  }
+
+  .headerContacts {
+    display: none !important;
+  }
+
+  .headerRight {
+    display: flex;
+    position: static;
+    transform: none;
+    align-items: center;
+    gap: 8px;
+    left: auto;
+    width: auto;
+    order: 3;
+  }
+
+  .headerLangWrap {
+    position: relative;
+    left: auto;
+    transform: none;
+    width: auto;
+    min-width: 40px;
+    max-width: none;
+    height: auto;
+    min-height: 24px;
+    max-height: none;
+    z-index: 20;
+  }
+
+  .headerLangDropdown {
+    z-index: 21;
+  }
+
+  .headerLang {
+    position: static;
+    width: auto;
+    height: auto;
+    font-size: 11px;
+  }
+
+  .headerLoginWrap {
+    position: static;
+  }
+
+  .headerLogin {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .headerLoginIcon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .headerMessengers {
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    left: auto;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .headerMessengerLink {
+    padding: 6px;
+  }
+
+  .headerMessengerLabel {
+    display: none !important;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .headerMessengerIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .headerMessengerIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .headerBurgerWrap {
+    display: none !important;
+  }
+
+  .headerDrawerBackdrop,
+  .headerDrawer {
+    display: none !important;
+  }
+
+  .hero {
+    padding: 0.75rem 12px;
+  }
+
+  .heroTitle {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .heroSubtitle {
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 10px 0 0.75rem;
+  }
+
+  .heroCta {
+    max-width: 100%;
+    height: 42px;
+    margin-top: 20px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .heroBusiness .heroCta {
+    max-width: 100%;
+  }
+
+  .scrollHint {
+    padding: 0.4rem 0.75rem 1rem;
+  }
+
+  .scrollHintIcon svg {
+    width: 10px;
+    height: 14px;
+  }
+}
+
+/* Жёстко показываем переключатель Покупателю/Бизнесу на узких экранах (последнее правило) */
+@media (max-width: 860px) {
+  .pageHeader .headerTabsMobile {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 140px !important;
   }
 }

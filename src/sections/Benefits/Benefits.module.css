@@ -71,3 +71,13 @@
     gap: 12px;
   }
 }
+
+@media (max-width: 400px) {
+  .section {
+    padding: 24px 12px 40px;
+  }
+
+  .inner {
+    gap: 10px;
+  }
+}

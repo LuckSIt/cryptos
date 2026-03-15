@@ -39,6 +39,8 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
   const [audienceMode, setAudienceMode] = useState<AudienceMode>('buyer');
   const [lang, setLang] = useState<Lang>('RU');
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
   const videoRef = useRef<HTMLVideoElement>(null);
   const businessVideoRef = useRef<HTMLVideoElement>(null);
   const langCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -162,6 +164,23 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
               </button>
             </div>
           </div>
+          {/* Переключатель для узких экранов — отдельно от headerTop, чтобы точно не перекрывался */}
+          <div className={styles.headerTabsMobile} role="group" aria-label="Режим: Покупателю или Бизнесу">
+            <button
+              type="button"
+              className={audienceMode === 'buyer' ? `${styles.headerTabMobile} ${styles.headerTabMobileActive}` : styles.headerTabMobile}
+              onClick={(e) => { e.stopPropagation(); setAudienceMode('buyer'); }}
+            >
+              Покупателю
+            </button>
+            <button
+              type="button"
+              className={audienceMode === 'business' ? `${styles.headerTabMobile} ${styles.headerTabMobileActive}` : styles.headerTabMobile}
+              onClick={(e) => { e.stopPropagation(); setAudienceMode('business'); }}
+            >
+              Бизнесу
+            </button>
+          </div>
           <nav className={styles.headerNav}>
             <a href="#main">Главная</a>
             <a href="#exchange">Обмен</a>
@@ -253,14 +272,14 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
               </button>
             </div>
             <div className={styles.headerMessengers}>
-              <a href="#" className={styles.headerMessengerLink} aria-label="WhatsApp">
+              <a href="https://wa.me/78002000600" className={styles.headerMessengerLink} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                 <span className={styles.headerMessengerIcon} aria-hidden>
                   <svg viewBox="0 0 16 17" fill="currentColor">
                     <path d="M12.466,9.49c-.218-.09-1.261-.54-1.455-.61s-.332-.09-.481.1-.55.6-.676.73-.241.14-.458,0a6.076,6.076,0,0,1-1.707-.92A5.414,5.414,0,0,1,6.542,7.5c-.126-.18,0-.28.092-.38s.206-.21.321-.32a1.36,1.36,0,0,0,.206-.31.337.337,0,0,0,0-.33c0-.09-.481-1-.665-1.37s-.344-.32-.47-.32H5.568a.881.881,0,0,0-.573.23A1.978,1.978,0,0,0,4.25,6.25,3.339,3.339,0,0,0,5.109,8.2,9.259,9.259,0,0,0,8.765,11c.5.19.894.3,1.2.39a3.307,3.307,0,0,0,1.341.07,2.232,2.232,0,0,0,1.444-.88,1.476,1.476,0,0,0,.126-.88A1.232,1.232,0,0,0,12.466,9.49Z" transform="translate(0 0.552)" />
                     <path d="M14.229,2.841A7.9,7.9,0,0,0,8.548.5,7.99,7.99,0,0,0,1.664,12.474L.59,16.609l4.231-1.074a7.947,7.947,0,0,0,3.812.967H8.548a7.99,7.99,0,0,0,5.681-13.66ZM8.548,15.127a6.572,6.572,0,0,1-3.383-.934l-.236-.14-2.513.655.666-2.449-.15-.247a6.631,6.631,0,1,1,5.617,3.114Z" />
                   </svg>
                 </span>
-                WhatsApp
+                <span className={styles.headerMessengerLabel}>WhatsApp</span>
               </a>
               <a href="https://t.me/" className={styles.headerMessengerLink} aria-label="Telegram" target="_blank" rel="noopener noreferrer">
                 <span className={`${styles.headerMessengerIcon} ${styles.headerMessengerIconTelegram}`} aria-hidden>
@@ -268,11 +287,78 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
                     <path transform="translate(2138 -4)" d="M17.636,7.118s1.48-.577,1.357.824c-.041.577-.411,2.6-.7,4.782L17.307,19.2s-.082.948-.822,1.113a3.276,3.276,0,0,1-2.056-.742c-.164-.124-3.084-1.979-4.111-2.886a.782.782,0,0,1,.041-1.319l4.317-4.122c.493-.495.987-1.649-1.069-.247L7.851,14.909a2.41,2.41,0,0,1-1.891.041l-2.672-.824s-.987-.618.7-1.237C8.1,10.952,13.154,8.973,17.636,7.118Z" />
                   </svg>
                 </span>
-                Telegram
+                <span className={styles.headerMessengerLabel}>Telegram</span>
               </a>
             </div>
           </div>
+
+          <div className={styles.headerBurgerWrap}>
+            <button
+              type="button"
+              className={styles.headerBurger}
+              onClick={(e) => { e.stopPropagation(); setMobileMenuOpen((v) => !v); }}
+              aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              aria-expanded={mobileMenuOpen}
+            >
+              <span className={styles.headerBurgerLine} />
+              <span className={styles.headerBurgerLine} />
+              <span className={styles.headerBurgerLine} />
+            </button>
+          </div>
         </header>
+
+        <div
+          className={`${styles.headerDrawerBackdrop} ${mobileMenuOpen ? styles.headerDrawerBackdropVisible : ''}`}
+          aria-hidden={!mobileMenuOpen}
+          onClick={closeMobileMenu}
+        />
+        <div className={`${styles.headerDrawer} ${mobileMenuOpen ? styles.headerDrawerOpen : ''}`} aria-hidden={!mobileMenuOpen}>
+          <div className={styles.headerDrawerTabs}>
+            <button
+              type="button"
+              className={audienceMode === 'buyer' ? `${styles.headerDrawerTab} ${styles.headerDrawerTabActive}` : styles.headerDrawerTab}
+              onClick={() => { setAudienceMode('buyer'); closeMobileMenu(); }}
+            >
+              Покупателю
+            </button>
+            <button
+              type="button"
+              className={audienceMode === 'business' ? `${styles.headerDrawerTab} ${styles.headerDrawerTabActive}` : styles.headerDrawerTab}
+              onClick={() => { setAudienceMode('business'); closeMobileMenu(); }}
+            >
+              Бизнесу
+            </button>
+          </div>
+          <nav className={styles.headerDrawerNav}>
+            <a href="#main" onClick={closeMobileMenu}>Главная</a>
+            <a href="#exchange" onClick={closeMobileMenu}>Обмен</a>
+            <a href="#about" onClick={closeMobileMenu}>О нас</a>
+            <a href="#news" onClick={closeMobileMenu}>Новости</a>
+            <a href="#reviews" onClick={closeMobileMenu}>Отзывы</a>
+            <a href="#rules" onClick={closeMobileMenu}>Правила обмена</a>
+            <a href="#rules" onClick={closeMobileMenu}>Политика AML/KYC</a>
+            <a href="#contacts" onClick={closeMobileMenu}>Контакты</a>
+          </nav>
+          <div className={styles.headerDrawerContacts}>
+            <a href="tel:88002000600" className={styles.headerDrawerContact} onClick={closeMobileMenu}>8 800 2000 600</a>
+            <a href="mailto:info@flarex.pro" className={styles.headerDrawerContact} onClick={closeMobileMenu}>info@binarflow.kg</a>
+          </div>
+          <div className={styles.headerDrawerLang}>
+            <button type="button" className={styles.headerDrawerLangBtn} onClick={() => { setLang('RU'); closeMobileMenu(); }}>
+              <span className={styles.headerDrawerLangFlag}><FlagRU /></span> RU
+            </button>
+            <button type="button" className={styles.headerDrawerLangBtn} onClick={() => { setLang('ENG'); closeMobileMenu(); }}>
+              <span className={styles.headerDrawerLangFlag}><FlagUS /></span> ENG
+            </button>
+          </div>
+          <button type="button" className={styles.headerDrawerLogin} onClick={closeMobileMenu}>
+            Войти
+          </button>
+          <div className={styles.headerDrawerMessengers}>
+            <a href="https://wa.me/78002000600" className={styles.headerDrawerMessenger} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>WhatsApp</a>
+            <a href="https://t.me/" className={styles.headerDrawerMessenger} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>Telegram</a>
+          </div>
+        </div>
 
         <div className={`${styles.hero} ${audienceMode === 'business' ? styles.heroBusiness : ''}`}>
           {audienceMode === 'buyer' ? (
