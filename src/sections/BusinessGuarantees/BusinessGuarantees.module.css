@@ -151,6 +151,30 @@
   }
 }
 
+/* 400–600px: увеличенные интервалы между блоками и карточками */
+@media (min-width: 401px) and (max-width: 600px) {
+  .section {
+    padding: 48px 20px 56px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  
+
+  .inner {
+    padding-top: 56px;
+    gap: 48px;
+    row-gap: 180px;
+  }
+
+  .cardContent {
+    padding: 0 24px 28px;
+    gap: 14px;
+  }
+}
+
 @media (max-width: 400px) {
   .section {
     padding: 24px 12px 40px;

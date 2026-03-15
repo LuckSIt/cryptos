@@ -1,5 +1,35 @@
 /* === Адаптация: этап 1 — основа, 2 — Header, 3 — IntroScreen hero, 4 — ExchangeWidget, 5 — Hero, 6 — News, 7 — Reviews, 8 — Footer. === */
 
+/* Segoe UI с CDN для всех устройств (в т.ч. iPhone), local() для Windows */
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Segoe UI'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI.woff') format('woff');
+}
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Segoe UI'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Segoe UI Bold'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Segoe UI Bold Italic'), url('https://fonts.cdnfonts.com/s/15051/Segoe%20UI%20Bold%20Italic.woff') format('woff');
+}
+
 *,
 *::before,
 *::after {
