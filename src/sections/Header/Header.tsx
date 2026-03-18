@@ -52,7 +52,7 @@ const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => {
         </span>
         <span className={styles.navLinkText}>WhatsApp</span>
       </a>
-      <a href="https://t.me/flarex_pro" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+      <a href="https://t.me/binarflow" className={`${styles.navLink} ${styles.navLinkMessenger}`} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
         <span className={styles.navLinkIcon} aria-hidden>
           <svg viewBox="2136 -4 24 24" fill="currentColor">
             <path transform="translate(2138 -4)" d="M17.636,7.118s1.48-.577,1.357.824c-.041.577-.411,2.6-.7,4.782L17.307,19.2s-.082.948-.822,1.113a3.276,3.276,0,0,1-2.056-.742c-.164-.124-3.084-1.979-4.111-2.886a.782.782,0,0,1,.041-1.319l4.317-4.122c.493-.495.987-1.649-1.069-.247L7.851,14.909a2.41,2.41,0,0,1-1.891.041l-2.672-.824s-.987-.618.7-1.237C8.1,10.952,13.154,8.973,17.636,7.118Z" />
@@ -84,7 +84,7 @@ const Header: FC<HeaderProps> = ({ visible = true, variant = 'buyer' }) => {
         <a href="https://wa.me/78002000600" className={styles.drawerLink} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
           WhatsApp
         </a>
-        <a href="https://t.me/flarex_pro" className={styles.drawerLink} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+        <a href="https://t.me/binarflow" className={styles.drawerLink} aria-label="Telegram" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
           Telegram
         </a>
       </div>

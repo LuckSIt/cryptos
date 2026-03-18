@@ -17,7 +17,7 @@
 .partnersBar {
   width: 100%;
   background: #0a0a0a;
-  padding: 24px 0;
+  padding: 40px 0;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -87,7 +87,9 @@
 .scrollTopWrap {
   display: flex;
   justify-content: center;
-  margin-top: -20px;
+  /* Делаем наложение кнопки на стык без сдвига лэйаута футера */
+  height: 0;
+  margin-top: 0;
   position: relative;
   z-index: 2;
 }
@@ -95,22 +97,31 @@
 .scrollTopBtn {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  background: #1890FF;
+  border-radius: 10px;
+  background: #1890FF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 5px 5px #00000033;
+  opacity: 1;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  /* Поднимаем на стык чёрной ленты и синего блока */
+  transform: translateY(-5px);
 }
 
 .scrollTopBtn:hover {
-  background: #42a5f5;
+  box-shadow: 0px 5px 5px #00000033;
 }
 
 .scrollTopBtn svg {
+  width: 30px;
+  height: 50px;
   color: #ffffff;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  opacity: 1;
 }
 
 .mainBlock {
@@ -140,10 +151,14 @@
 
 .brandLogoLink img {
   display: block;
-  height: clamp(28px, 3vw, 36px);
-  width: auto;
+  width: 92px;
+  height: 20px;
   object-fit: contain;
   transition: opacity 0.25s ease;
+}
+
+.brandLogoImg {
+  opacity: 0.3;
 }
 
 .brandLogoImgHover {
@@ -169,39 +184,50 @@
   align-items: start;
 }
 
+/* Блок колонок «Техподдержка» / «Сотрудничество» — единая типографика */
 .columnLeft {
   text-align: left;
+  color: #ffffff;
+  letter-spacing: 0;
+  opacity: 1;
+  font-family: 'Selawik', 'Segoe UI', sans-serif;
 }
 
 .columnTitle {
-  margin: 0 0 24px;
-  font-family: 'Selawik', 'Segoe UI', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
+  margin: 0 0 25px;
+  text-align: left;
+  font: normal normal bold 10px/20px 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: #ffffff;
+  opacity: 1;
 }
 
 .columnText {
-  margin: 0 0 6px;
-  font-family: 'Selawik', 'Segoe UI', sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 4px;
+  text-align: left;
+  font: normal normal normal 10px/20px 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
+  color: #ffffff;
+  opacity: 1;
 }
 
 .columnTextBreak {
-  margin-top: 20px;
-  margin-bottom: 6px;
+  margin-top: 25px;
+  margin-bottom: 4px;
 }
 
 .columnText strong {
-  font-family: 'Selawik', 'Segoe UI', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
+  font: normal normal bold 10px/20px 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
   color: #ffffff;
+  opacity: 1;
 }
 
 .columnLink {
-  color: rgba(255, 255, 255, 0.9);
+  font: normal normal normal 10px/20px 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
+  color: #ffffff;
+  opacity: 1;
   text-decoration: none;
 }
 
@@ -225,22 +251,26 @@
 }
 
 .links a {
-  font-family: 'Selawik', 'Segoe UI', sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
+  text-align: left;
+  font: normal normal normal 10px/14px 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
+  color: #ffffff;
+  opacity: 0.6;
   text-decoration: none;
 }
 
 .links a:hover {
+  opacity: 1;
   color: #ffffff;
 }
 
 .copyright {
   text-align: center;
   margin: 0;
-  font-family: 'Selawik', 'Segoe UI', sans-serif;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  font: normal normal 500 8px/20px 'Montserrat', 'Selawik', 'Segoe UI', sans-serif;
+  letter-spacing: 0;
+  color: #ffffff;
+  opacity: 0.5;
 }
 
 /* === Этап 8: адаптация Footer === */
@@ -266,6 +296,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
+    transform: translateY(-3px);
   }
 
   .scrollTopBtn svg {
@@ -284,7 +315,8 @@
   }
 
   .brandLogoLink img {
-    height: clamp(26px, 2.8vw, 32px);
+    width: 92px;
+    height: 20px;
   }
 
   .columns {
@@ -293,25 +325,9 @@
   }
 
   .columnTitle {
-    font-size: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
-  .columnText {
-    font-size: 13px;
-  }
-
-  .columnText strong {
-    font-size: 16px;
-  }
-
-  .links a {
-    font-size: 13px;
-  }
-
-  .copyright {
-    font-size: 11px;
-  }
 }
 
 @media (max-width: 770px) {
@@ -333,13 +349,15 @@
   }
 
   .scrollTopWrap {
-    margin-top: -16px;
+    height: 0;
+    margin-top: 0;
   }
 
   .scrollTopBtn {
     width: 36px;
     height: 36px;
     border-radius: 8px;
+    transform: translateY(-1px);
   }
 
   .scrollTopBtn svg {
@@ -358,7 +376,8 @@
   }
 
   .brandLogoLink img {
-    height: 26px;
+    width: 92px;
+    height: 20px;
   }
 
   .columns {
@@ -368,38 +387,14 @@
     align-items: stretch;
   }
 
-  .linksWrap {
-    text-align: left;
-  }
-
-  .links {
-    align-items: flex-start;
-  }
-
   .columnTitle {
-    font-size: 15px;
-    margin-bottom: 14px;
-  }
-
-  .columnText {
-    font-size: 12px;
+    margin-bottom: 12px;
   }
 
   .columnTextBreak {
-    margin-top: 14px;
+    margin-top: 12px;
   }
 
-  .columnText strong {
-    font-size: 15px;
-  }
-
-  .links a {
-    font-size: 12px;
-  }
-
-  .copyright {
-    font-size: 11px;
-  }
 }
 
 @media (max-width: 400px) {
@@ -421,13 +416,15 @@
   }
 
   .scrollTopWrap {
-    margin-top: -12px;
+    height: 0;
+    margin-top: 0;
   }
 
   .scrollTopBtn {
     width: 32px;
     height: 32px;
     border-radius: 6px;
+    transform: translateY(0px);
   }
 
   .scrollTopBtn svg {
@@ -446,7 +443,8 @@
   }
 
   .brandLogoLink img {
-    height: 22px;
+    width: 92px;
+    height: 20px;
   }
 
   .columns {
@@ -455,27 +453,11 @@
   }
 
   .columnTitle {
-    font-size: 14px;
-    margin-bottom: 12px;
-  }
-
-  .columnText {
-    font-size: 11px;
+    margin-bottom: 10px;
   }
 
   .columnTextBreak {
     margin-top: 10px;
   }
 
-  .columnText strong {
-    font-size: 14px;
-  }
-
-  .links a {
-    font-size: 11px;
-  }
-
-  .copyright {
-    font-size: 10px;
-  }
 }

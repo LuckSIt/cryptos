@@ -10,6 +10,13 @@ type AudienceMode = 'buyer' | 'business';
 
 type Step = 0 | 1 | 2 | 3;
 
+/** Длительности фаз прелоадера (мс): синий экран → логотип → облака → главная */
+const PRELOADER_PHASE_MS = {
+  blue: 650,
+  logo: 1300,
+  video: 2000,
+} as const;
+
 type Lang = 'RU' | 'ENG';
 
 const FlagRU = () => (
@@ -82,22 +89,34 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
 
   useEffect(() => () => clearLangCloseTimeout(), [clearLangCloseTimeout]);
 
-  const handleReveal = useCallback(() => {
-    setStep((prev) => (prev < 3 ? ((prev + 1) as Step) : prev));
+  useEffect(() => {
+    const reduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced) {
+      setStep(3);
+      return;
+    }
+
+    const { blue, logo, video } = PRELOADER_PHASE_MS;
+    const t1 = window.setTimeout(() => setStep(1), blue);
+    const t2 = window.setTimeout(() => setStep(2), blue + logo);
+    const t3 = window.setTimeout(() => setStep(3), blue + logo + video);
+
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
   }, []);
 
   return (
     <section
       id="main"
       className={styles.screen}
-      onClick={handleReveal}
-      onTouchStart={handleReveal}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') handleReveal();
-      }}
-      aria-label="Нажмите или коснитесь для следующего шага"
+      aria-busy={!showPage}
+      aria-label="Загрузка"
     >
       <div className={styles.videoWrap}>
         <video
@@ -201,14 +220,14 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
                 </span>
                 8 800 2000 600
               </a>
-              <a href="mailto:info@flarex.pro" className={styles.headerEmail}>
+              <a href="mailto:info@binarflow.kg" className={styles.headerEmail}>
                 <span className={styles.headerEmailIcon} aria-hidden>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </span>
                 <span className={styles.headerEmailTextDefault}>info@binarflow.kg</span>
-                <span className={styles.headerEmailTextHover}>info@flarex.pro</span>
+                <span className={styles.headerEmailTextHover}>info@binarflow.kg</span>
               </a>
             </div>
             <div
@@ -341,7 +360,7 @@ const IntroScreen = ({ onReachMainPage }: IntroScreenProps) => {
           </nav>
           <div className={styles.headerDrawerContacts}>
             <a href="tel:88002000600" className={styles.headerDrawerContact} onClick={closeMobileMenu}>8 800 2000 600</a>
-            <a href="mailto:info@flarex.pro" className={styles.headerDrawerContact} onClick={closeMobileMenu}>info@binarflow.kg</a>
+            <a href="mailto:info@binarflow.kg" className={styles.headerDrawerContact} onClick={closeMobileMenu}>info@binarflow.kg</a>
           </div>
           <div className={styles.headerDrawerLang}>
             <button type="button" className={styles.headerDrawerLangBtn} onClick={() => { setLang('RU'); closeMobileMenu(); }}>

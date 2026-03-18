@@ -189,12 +189,11 @@
     width: fit-content;
     max-width: 100%;
     margin: -50px auto;
-    transform: rotate(90deg);
     padding: 0;
+    /* Подстройка визуального центра (после rotate) */
+    transform: translateX(65px) rotate(90deg);
+    transform-origin: center;
     box-sizing: border-box;
-    justify-self: center;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .swapBtn,
@@ -856,6 +855,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center center;
   transition: opacity 0.2s ease;
 }
 
@@ -893,11 +893,12 @@
   font: 400 14px/1.25 "Selawik", "Segoe UI", sans-serif;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .cta:hover {
-  border-color: #000000;
+  background: #ffffff;
+  border-color: #ffffff;
   color: #000000;
 }
 

@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   padding: clamp(32px, 5vh, 64px) clamp(24px, 5vw, 64px);
-  background: #FFFFFF;
+  background: #ffffff;
   box-sizing: border-box;
 }
 
@@ -14,7 +14,6 @@
   gap: 6px;
 }
 
-/* На больших экранах карточки крупнее */
 @media (min-width: 1280px) {
   .inner {
     grid-template-columns: repeat(3, 380px);
@@ -31,14 +30,21 @@
 .cardImageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 352 / 416;
   display: block;
   transform-origin: center bottom;
   transition: transform 0.6s ease-out;
+  container-type: inline-size;
+  container-name: benefit-card;
 }
 
 .card:hover .cardImageWrap {
   transform: scaleY(1.08);
+}
+
+.cardImgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .cardImageDefault,
@@ -62,6 +68,39 @@
 
 .card:hover .cardImageHover {
   opacity: 1;
+}
+
+/* Как в SVG: отступы ~32px по бокам (32/352), блок у нижнего края синей зоны */
+.cardText {
+  position: absolute;
+  z-index: 2;
+  left: 9.09%;
+  right: 9.09%;
+  bottom: 8.4%;
+  text-align: center;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.cardTitle {
+  margin: 0 0 clamp(17px, 5.7cqw, 22px);
+  padding: 0;
+  font-family: 'Selawik', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(17px, 5.95cqw, 21px);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.cardBody {
+  margin: 0;
+  padding: 0;
+  font-family: 'Selawik', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 3.98cqw, 14px);
+  /* В макете строки на y=67, 89, 111 → шаг ~22px при 14px */
+  line-height: clamp(20px, 5.65cqw, 22px);
+  letter-spacing: 0;
 }
 
 @media (max-width: 1180px) {

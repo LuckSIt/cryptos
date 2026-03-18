@@ -11,7 +11,7 @@ const PARTNER_LOGOS = [
   { image: 'Компонент 12 – 30.svg', imageHover: 'Компонент 12 – 30 (Состояние наведения).svg', name: 'РБК' },
   { image: 'Компонент 17 – 3.svg', imageHover: 'Компонент 17 – 3 (Состояние наведения).svg', name: 'Партнёр' },
   { image: 'Компонент 18 – 4.svg', imageHover: 'Компонент 18 – 4 (Состояние наведения).svg', name: 'Партнёр' },
-  { image: 'logo-orig.svg', imageHover: 'logo-orig (Состояние наведения).svg', name: 'Flarex' },
+  { image: 'logo-orig.svg', imageHover: 'logo-orig (Состояние наведения).svg', name: 'Binarflow' },
 ] as const;
 
 /** Копий в ленте: чтобы полоса заполняла экран и бесконечно крутилась без пустого края */
@@ -77,7 +77,7 @@ const Footer: FC<FooterProps> = ({ variant = 'buyer' }) => {
               <p className={styles.columnText}>Ежедневно с 11:00 до 22:00</p>
               <p className={`${styles.columnText} ${styles.columnTextBreak}`}><strong>Поддержка по почте:</strong></p>
               <p className={styles.columnText}>
-                <a href="mailto:support@flarex.pro" className={styles.columnLink}>support@flarex.pro</a>
+                <a href="mailto:support@binarflow.kg" className={styles.columnLink}>support@binarflow.kg</a>
               </p>
             </div>
             <div className={styles.columnLeft}>
@@ -86,11 +86,10 @@ const Footer: FC<FooterProps> = ({ variant = 'buyer' }) => {
               <p className={styles.columnText}>Ежедневно с 11:00 до 22:00</p>
               <p className={`${styles.columnText} ${styles.columnTextBreak}`}><strong>Поддержка по почте:</strong></p>
               <p className={styles.columnText}>
-                <a href="mailto:support@flarex.pro" className={styles.columnLink}>support@flarex.pro</a>
+                <a href="mailto:support@binarflow.kg" className={styles.columnLink}>support@binarflow.kg</a>
               </p>
             </div>
             <nav aria-label="Футер" className={styles.linksWrap}>
-              <h3 className={styles.columnTitle}>Разделы</h3>
               <ul className={styles.links}>
                 <li><a href="#exchange">Обмен</a></li>
                 <li><a href="#rules">Правила обмена</a></li>

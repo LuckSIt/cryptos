@@ -2,8 +2,9 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import type { FC } from 'react';
 import styles from './ExchangeWidget.module.css';
 
-const SWAP_ICON_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width.svg');
-const SWAP_ICON_HOVER_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width (Состояние наведения).svg');
+// cache-bust, чтобы изменения в SVG сразу подтягивались в dev
+const SWAP_ICON_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width.svg') + '?v=4';
+const SWAP_ICON_HOVER_SVG = '/crypto/' + encodeURIComponent('icon-outlined-editor-column-width (Состояние наведения).svg') + '?v=4';
 
 const TABS = ['All', 'Crypto', 'Fiat', 'Stable', 'Cash'] as const;
 const TABS_BUSINESS = ['Cashless payment', 'Crypto', 'Stable'] as const;
